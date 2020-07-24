@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://dialogs/syndibox/syndibox.gd" type="Script" id=1]
+
+
+
+
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SyndiBox" type="ReferenceRect" parent="."]
+margin_left = 10.0
+margin_top = 425.413
+margin_right = 1018.0
+margin_bottom = 594.413
+border_color = Color( 0.596078, 0.207843, 0.207843, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+DIALOG = "Hello comment ça va bieN"
+AUTO_ADVANCE = true
+FONT = "res://Fonts/test_font.tres"
+PAUSE_AT_PUNCTUATION = true
+PUNCTUATION_PAUSE_LENGTH = 1.0
+CUSTOM_EFFECTS = "res://Dialogs/SyndiBox/custom.gd"

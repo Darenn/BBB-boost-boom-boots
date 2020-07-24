@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://camera/box_cam_2D/icon.png" type="Texture" id=1]
+[ext_resource path="res://camera/rts_camera/RTSCamera2D.gd" type="Script" id=2]
+
+
+
+
+
+[node name="Node2D" type="Node2D"]
+
+[node name="RTSCamera2D" type="Camera2D" parent="."]
+current = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource( 2 )
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 250.737, 138.263 )
+texture = ExtResource( 1 )

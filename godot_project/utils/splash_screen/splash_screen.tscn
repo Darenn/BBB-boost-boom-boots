@@ -1,0 +1,154 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://utils/splash_screen/splash_screen.gd" type="Script" id=1]
+[ext_resource path="res://utils/splash_screen/scorespacejam_sprite_sheet.png" type="Texture" id=2]
+[ext_resource path="res://utils/splash_screen/Godot_logo.svg" type="Texture" id=3]
+[ext_resource path="res://utils/splash_screen/logo_darenn_good.png" type="Texture" id=4]
+[ext_resource path="res://utils/splash_screen/splash_screen_item.gd" type="Script" id=5]
+[ext_resource path="res://gui/menus/my_leaderboard.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "splash"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=4]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 399, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 798, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1197, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1596, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 224, 399, 224 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=12]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="SplashScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene = ExtResource( 6 )
+
+[node name="DarennKellerSplashScreen" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="DarennKellerSplashScreen"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1.00595, 1.00595 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DarennKellerSplashScreen"]
+anims/splash = SubResource( 2 )
+
+[node name="GodotSplashScreen" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GodotSplashScreen"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.52132, 0.52132 )
+frames = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GodotSplashScreen"]
+method_call_mode = 1
+anims/splash = SubResource( 4 )
+
+[node name="ScoreSpaceSplashScreen" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ScoreSpaceSplashScreen"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1.00595, 1.00595 )
+frames = SubResource( 11 )
+frame = 4
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreSpaceSplashScreen"]
+anims/splash = SubResource( 12 )
