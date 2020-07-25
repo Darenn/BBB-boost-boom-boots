@@ -4,7 +4,7 @@
 [ext_resource path="res://_entities/bkill/bkill.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25.2184, 26.16 )
+extents = Vector2( 25.2184, 12.8708 )
 
 [node name="bkill" type="Area2D" groups=[
 "killers",
@@ -21,7 +21,7 @@ shape = SubResource( 1 )
 "killers",
 ]]
 modulate = Color( 1, 0, 0, 1 )
-position = Vector2( -0.130426, -0.138695 )
-scale = Vector2( 1.56981, 0.53946 )
+position = Vector2( -0.130426, -0.370337 )
+scale = Vector2( 1.56981, 0.293336 )
 texture = ExtResource( 1 )
 [connection signal="body_entered" from="." to="." method="_on_bkill_body_entered"]

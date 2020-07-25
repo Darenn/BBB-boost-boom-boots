@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://_entities/player/player.gd" type="Script" id=1]
 [ext_resource path="res://_entities/player/remover_pl.png" type="Texture" id=2]
+[ext_resource path="res://fonts/test_fon_hudt.tres" type="DynamicFont" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.3879, 26.0373 )
@@ -9,6 +10,8 @@ extents = Vector2( 39.3879, 26.0373 )
 [node name="player" type="KinematicBody2D"]
 collision_mask = 2
 script = ExtResource( 1 )
+vertical_speed = 250
+jump_slow_motion_duration = 0.1
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.192157, 1, 0.0784314, 1 )
@@ -18,3 +21,17 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -39.0
+margin_top = -25.0
+margin_right = 38.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 3 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

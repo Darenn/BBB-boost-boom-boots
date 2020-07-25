@@ -1,55 +1,108 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://_entities/wall/wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_entities/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://_entities/camera/camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://_entities/bkill/bkill.tscn" type="PackedScene" id=4]
+[ext_resource path="res://_entities/jump_pickup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/main.gd" type="Script" id=6]
+[ext_resource path="res://fonts/test_fon_hudt.tres" type="DynamicFont" id=7]
+[ext_resource path="res://gui/hud/score_gui.gd" type="Script" id=8]
+[ext_resource path="res://camera/screen_shake/ScreenShake.tscn" type="PackedScene" id=9]
 
 [node name="main" type="Node2D"]
+script = ExtResource( 6 )
 
-[node name="Node2D" parent="." instance=ExtResource( 1 )]
+[node name="right_wall" parent="." instance=ExtResource( 1 )]
 position = Vector2( 609.764, -1035.55 )
 
-[node name="Node2D2" parent="." instance=ExtResource( 1 )]
+[node name="left_wall" parent="." instance=ExtResource( 1 )]
 position = Vector2( 134.747, -1051.21 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+[node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 519.5, 909.462 )
+jump_speed = 800
 
-[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+[node name="camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 497.793, 501.046 )
+vertical_speed = 250
+
+[node name="Label" type="Label" parent="camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 194.207
+margin_top = -493.046
+margin_right = 487.207
+margin_bottom = -211.046
+custom_fonts/font = ExtResource( 7 )
+text = "score : 0
+"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="screen_shake" parent="camera" instance=ExtResource( 9 )]
 
 [node name="bkills" type="Node2D" parent="."]
 
 [node name="bkill" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, 113.051 )
+position = Vector2( 212.535, -525.949 )
 
 [node name="bkill2" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 533.043, 438.319 )
+position = Vector2( 533.043, -200.681 )
 
 [node name="bkill3" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, -51.9636 )
+position = Vector2( 212.535, -690.964 )
 
 [node name="bkill4" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 534.63, -259.818 )
+position = Vector2( 534.63, -898.818 )
 
 [node name="bkill5" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, -426.419 )
+position = Vector2( 212.535, -1065.42 )
 
 [node name="bkill6" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 534.63, -599.366 )
+position = Vector2( 534.63, -1238.37 )
 
 [node name="bkill7" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, -794.527 )
+position = Vector2( 212.535, -1433.53 )
 
 [node name="bkill9" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 210.948, -1016.66 )
+position = Vector2( 210.948, -1655.66 )
 
 [node name="bkill10" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 534.574, -1155.56 )
+position = Vector2( 534.574, -1794.56 )
 
 [node name="bkill11" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 209.516, -1250.07 )
+position = Vector2( 209.516, -1889.07 )
 
 [node name="bkill13" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 210.805, -1540.55 )
+position = Vector2( 210.805, -2179.55 )
+
+[node name="pickups" type="Node2D" parent="."]
+
+[node name="jump_pickup" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 368.941, -145.278 )
+
+[node name="jump_pickup5" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 372.586, -351.038 )
+
+[node name="jump_pickup6" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 368.485, -956.862 )
+
+[node name="jump_pickup7" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 367.312, -1344.75 )
+
+[node name="jump_pickup8" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 365.838, -2314.15 )
+
+[node name="jump_pickup2" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 368.076, -813.403 )
+
+[node name="jump_pickup3" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 363.532, -1183.75 )
+
+[node name="jump_pickup4" parent="pickups" instance=ExtResource( 5 )]
+position = Vector2( 365.804, -1790.4 )
+[connection signal="landed" from="player" to="camera" method="shake"]
+[connection signal="scored" from="player" to="camera/Label" method="_on_player_scored"]
