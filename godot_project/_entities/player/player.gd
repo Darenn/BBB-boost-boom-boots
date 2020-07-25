@@ -49,6 +49,10 @@ func on_pickup_jump(jump_reward: int, score_reward: int) -> void:
 	_jump_count = min(_jump_count + jump_reward, max_jump_count)
 	score += score_reward
 	emit_signal("scored", score)
+	
+func on_destroying_destructibles(score_reward: int) -> void:
+	score += score_reward
+	emit_signal("scored", score)
 
 func _jump() -> void:
 	if _jump_count > 0:

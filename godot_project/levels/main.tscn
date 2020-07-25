@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://_entities/wall/wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_entities/player/player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://fonts/test_fon_hudt.tres" type="DynamicFont" id=7]
 [ext_resource path="res://gui/hud/score_gui.gd" type="Script" id=8]
 [ext_resource path="res://camera/screen_shake/ScreenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://_entities/destructible/destructible.tscn" type="PackedScene" id=10]
 
 [node name="main" type="Node2D"]
 script = ExtResource( 6 )
@@ -104,5 +105,16 @@ position = Vector2( 363.532, -1183.75 )
 
 [node name="jump_pickup4" parent="pickups" instance=ExtResource( 5 )]
 position = Vector2( 365.804, -1790.4 )
+
+[node name="destructibles" type="Node2D" parent="."]
+
+[node name="destrutible" parent="destructibles" instance=ExtResource( 10 )]
+position = Vector2( 608.854, -3.52161 )
+
+[node name="destrutible2" parent="destructibles" instance=ExtResource( 10 )]
+position = Vector2( 138.074, -889.38 )
+
+[node name="destrutible3" parent="destructibles" instance=ExtResource( 10 )]
+position = Vector2( 139.585, -2042.76 )
 [connection signal="landed" from="player" to="camera" method="shake"]
 [connection signal="scored" from="player" to="camera/Label" method="_on_player_scored"]
