@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://_entities/player/remover_pl.png" type="Texture" id=1]
-[ext_resource path="res://_entities/jump_pickup.gd" type="Script" id=2]
+[ext_resource path="res://_entities/jump_pickup/items.png" type="Texture" id=1]
+[ext_resource path="res://_entities/jump_pickup/jump_pickup.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20.068, 17.818 )
+extents = Vector2( 6.85986, 8.00709 )
 
 [node name="jump_pickup" type="Area2D"]
 script = ExtResource( 2 )
@@ -13,8 +13,7 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.992157, 0.905882, 0, 1 )
-position = Vector2( -8.34465e-07, -0.814515 )
-scale = Vector2( 1.15272, 0.355182 )
 texture = ExtResource( 1 )
+vframes = 16
+frame = 1
 [connection signal="body_entered" from="." to="." method="_on_jump_pickup_body_entered"]

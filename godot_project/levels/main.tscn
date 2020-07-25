@@ -1,40 +1,585 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://_entities/wall/wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://_entities/jump_pickup/items.png" type="Texture" id=1]
 [ext_resource path="res://_entities/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://_entities/camera/camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://_entities/bkill/bkill.tscn" type="PackedScene" id=4]
-[ext_resource path="res://_entities/jump_pickup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://_entities/jump_pickup/jump_pickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/main.gd" type="Script" id=6]
 [ext_resource path="res://fonts/test_fon_hudt.tres" type="DynamicFont" id=7]
 [ext_resource path="res://gui/hud/score_gui.gd" type="Script" id=8]
 [ext_resource path="res://camera/screen_shake/ScreenShake.tscn" type="PackedScene" id=9]
 [ext_resource path="res://_entities/destructible/destructible.tscn" type="PackedScene" id=10]
+[ext_resource path="res://addons/tile_spawner/tile_spawner.gd" type="Script" id=11]
+[ext_resource path="res://effects/background/skybox.png" type="Texture" id=12]
+[ext_resource path="res://tilesets/background.png" type="Texture" id=15]
+[ext_resource path="res://_entities/destructible/destructible_right.tscn" type="PackedScene" id=17]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
+
+[sub_resource type="TileSet" id=13]
+1/name = "background.png 1"
+1/texture = ExtResource( 15 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 304, 80, 16, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "center"
+2/texture = ExtResource( 15 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 160, 160, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 5 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "background.png 3"
+3/texture = ExtResource( 15 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 128, 128, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 6 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "background.png 4"
+4/texture = ExtResource( 15 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 128, 160, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 7 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "background.png 5"
+5/texture = ExtResource( 15 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 192, 160, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 8 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "background.png 6"
+6/texture = ExtResource( 15 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 160, 128, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 9 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 9 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "background.png 7"
+7/texture = ExtResource( 15 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 192, 128, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 10 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "background.png 8"
+8/texture = ExtResource( 15 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 128, 96, 32, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape = SubResource( 11 )
+8/shape_one_way = false
+8/shape_one_way_margin = 1.0
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 11 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+8/z_index = 0
+9/name = "background.png 9"
+9/texture = ExtResource( 15 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 160, 96, 32, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape = SubResource( 12 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 12 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+9/z_index = 0
+10/name = "background.png 10"
+10/texture = ExtResource( 15 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 192, 96, 32, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape = SubResource( 1 )
+10/shape_one_way = false
+10/shape_one_way_margin = 1.0
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+10/z_index = 0
+11/name = "background.png 11"
+11/texture = ExtResource( 15 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 128, 64, 32, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape = SubResource( 2 )
+11/shape_one_way = false
+11/shape_one_way_margin = 1.0
+11/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+11/z_index = 0
+12/name = "background.png 12"
+12/texture = ExtResource( 15 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 160, 64, 32, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape = SubResource( 3 )
+12/shape_one_way = false
+12/shape_one_way_margin = 1.0
+12/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+12/z_index = 0
+13/name = "background.png 13"
+13/texture = ExtResource( 15 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 192, 64, 32, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape = SubResource( 4 )
+13/shape_one_way = false
+13/shape_one_way_margin = 1.0
+13/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+13/z_index = 0
+
+[sub_resource type="TileSet" id=14]
+0/name = "jump_pickup"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 48, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "bkill"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 64, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "destructible"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 96, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "destructible_right"
+3/texture = ExtResource( 15 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 128, 0, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "destructible_left"
+4/texture = ExtResource( 15 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 96, 0, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
 
 [node name="main" type="Node2D"]
 script = ExtResource( 6 )
 
-[node name="right_wall" parent="." instance=ExtResource( 1 )]
-position = Vector2( 609.764, -1035.55 )
-
-[node name="left_wall" parent="." instance=ExtResource( 1 )]
-position = Vector2( 134.747, -1051.21 )
+[node name="walls" type="TileMap" parent="."]
+tile_set = SubResource( 13 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( -4784132, 1, 0, -4849661, 1, 0, -4718596, 1, 0, -4784125, 1, 0, -4653060, 1, 0, -4718589, 1, 0, -4587524, 1, 0, -4653053, 1, 0, -4521988, 1, 0, -4587517, 1, 0, -4456452, 1, 0, -4521981, 1, 0, -4390916, 1, 0, -4456445, 1, 0, -4325380, 1, 0, -4390909, 1, 0, -4259844, 1, 0, -4325373, 1, 0, -4194308, 1, 0, -4259837, 1, 0, -4128772, 1, 0, -4194301, 1, 0, -4063236, 1, 0, -4128765, 1, 0, -3997700, 1, 0, -4063229, 1, 0, -3932164, 1, 0, -3997693, 1, 0, -3866628, 1, 0, -3932157, 1, 0, -3801092, 1, 0, -3866621, 1, 0, -3735556, 1, 0, -3801085, 1, 0, -3670020, 1, 0, -3735549, 1, 0, -3604484, 1, 0, -3670013, 1, 0, -3538948, 1, 0, -3604477, 1, 0, -3473412, 1, 0, -3538941, 1, 0, -3407876, 1, 0, -3473405, 1, 0, -3342340, 1, 0, -3407869, 1, 0, -3276804, 7, 0, -3342333, 1, 0, -3211268, 7, 0, -3276797, 7, 0, -3145732, 7, 0, -3211261, 7, 0, -3080196, 7, 0, -3145725, 7, 0, -3014660, 7, 0, -3080189, 7, 0, -2949124, 7, 0, -3014653, 7, 0, -2883588, 7, 0, -2949117, 7, 0, -2818052, 7, 0, -2883581, 7, 0, -2752516, 7, 0, -2818045, 7, 0, -2686980, 7, 0, -2752509, 7, 0, -2621444, 7, 0, -2686973, 7, 0, -2555908, 7, 0, -2621437, 7, 0, -2490372, 7, 0, -2555901, 7, 0, -2424836, 7, 0, -2490368, 6, 0, -2490365, 7, 0, -2359300, 7, 0, -2424832, 6, 0, -2424829, 7, 0, -2293764, 7, 0, -2359296, 6, 0, -2359293, 7, 0, -2228228, 7, 0, -2293760, 6, 0, -2293757, 7, 0, -2162692, 7, 0, -2228224, 6, 0, -2228221, 7, 0, -2097156, 7, 0, -2162688, 6, 0, -2162685, 7, 0, -2031620, 7, 0, -2097152, 6, 0, -2097149, 7, 0, -1966084, 7, 0, -2031616, 6, 0, -2031613, 7, 0, -1900548, 7, 0, -1966080, 6, 0, -1966077, 7, 0, -1835012, 7, 0, -1900544, 6, 0, -1900541, 7, 0, -1769476, 7, 0, -1835008, 6, 0, -1835005, 7, 0, -1703940, 7, 0, -1769472, 6, 0, -1769469, 7, 0, -1638404, 7, 0, -1703936, 6, 0, -1703933, 7, 0, -1572868, 7, 0, -1638400, 6, 0, -1638397, 7, 0, -1507332, 7, 0, -1572864, 6, 0, -1572861, 7, 0, -1441796, 7, 0, -1507328, 6, 0, -1507325, 7, 0, -1376260, 7, 0, -1441792, 1, 0, -1441789, 7, 0, -1310724, 7, 0, -1376253, 7, 0, -1245188, 7, 0, -1310717, 7, 0, -1179652, 7, 0, -1245181, 7, 0, -1114116, 7, 0, -1179645, 7, 0, -1048580, 7, 0, -1114109, 7, 0, -983044, 7, 0, -1048573, 7, 0, -917508, 7, 0, -983037, 7, 0, -851972, 7, 0, -917501, 7, 0, -786436, 7, 0, -851965, 7, 0, -720900, 7, 0, -786429, 7, 0, -655364, 7, 0, -720893, 7, 0, -589828, 7, 0, -655357, 7, 0, -524292, 7, 0, -589821, 7, 0, -458756, 7, 0, -524285, 7, 0, -393220, 7, 0, -458749, 7, 0, -327684, 7, 0, -393213, 7, 0, -262148, 7, 0, -327677, 7, 0, -196612, 7, 0, -262141, 7, 0, -131076, 7, 0, -196605, 7, 0, -65540, 7, 0, -131069, 7, 0, -4, 7, 0, -65533, 7, 0, 65532, 7, 0, 3, 7, 0, 131068, 7, 0, 65539, 7, 0, 196604, 7, 0, 131075, 7, 0, 262140, 7, 0, 196611, 7, 0, 327676, 7, 0, 262147, 7, 0, 393212, 7, 0, 327683, 7, 0, 458748, 7, 0, 393219, 7, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 519.5, 909.462 )
-jump_speed = 800
+position = Vector2( 79.5722, 90.0861 )
+jump_speed = 400
+vertical_speed = 150
+
+[node name="bkills" type="Node2D" parent="."]
+position = Vector2( -156, 0 )
+
+[node name="pickups" type="Node2D" parent="."]
+position = Vector2( -156, 0 )
+
+[node name="destructibles" type="Node2D" parent="."]
+position = Vector2( -156, 0 )
+
+[node name="tile_spawner" type="Node2D" parent="."]
+position = Vector2( -156, 0 )
+script = ExtResource( 11 )
+source_tilemap = NodePath("../entities_tilemap")
+mapping = "res://tilesets/json/entities_tileset.json"
+
+[node name="bkill" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 68, -1496 )
+
+[node name="jump_pickup" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 68, -1464 )
+
+[node name="bkill2" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -1464 )
+
+[node name="destrutible" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 52, -1448 )
+
+[node name="jump_pickup2" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 244, -1416 )
+
+[node name="bkill3" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 68, -1400 )
+
+[node name="destrutible_right" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 244, -1400 )
+
+[node name="jump_pickup3" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 68, -1352 )
+
+[node name="destrutible2" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 52, -1336 )
+
+[node name="bkill4" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -1336 )
+
+[node name="jump_pickup4" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 244, -1304 )
+
+[node name="bkill5" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 68, -1272 )
+
+[node name="destrutible3" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 260, -1272 )
+
+[node name="jump_pickup5" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 68, -1224 )
+
+[node name="destrutible4" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 52, -1208 )
+
+[node name="bkill6" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 148, -1208 )
+
+[node name="bkill7" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 148, -1192 )
+
+[node name="bkill8" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 148, -1176 )
+
+[node name="bkill9" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 148, -1160 )
+
+[node name="jump_pickup6" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 100, -1144 )
+
+[node name="bkill10" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 148, -1144 )
+
+[node name="bkill11" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 148, -1080 )
+
+[node name="jump_pickup7" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 116, -1048 )
+
+[node name="destrutible_right2" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 148, -1032 )
+
+[node name="bkill12" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 68, -968 )
+
+[node name="destrutible5" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 52, -936 )
+
+[node name="jump_pickup8" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 100, -920 )
+
+[node name="bkill13" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 148, -840 )
+
+[node name="jump_pickup9" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 116, -792 )
+
+[node name="destrutible_right3" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 148, -792 )
+
+[node name="bkill14" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 68, -728 )
+
+[node name="bkill15" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -728 )
+
+[node name="bkill16" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -712 )
+
+[node name="destrutible6" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 52, -696 )
+
+[node name="bkill17" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -696 )
+
+[node name="bkill18" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -680 )
+
+[node name="bkill19" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -664 )
+
+[node name="jump_pickup10" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 148, -552 )
+
+[node name="destrutible_right4" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 244, -536 )
+
+[node name="bkill20" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 68, -488 )
+
+[node name="jump_pickup11" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 148, -408 )
+
+[node name="jump_pickup12" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 164, -408 )
+
+[node name="destrutible7" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 52, -392 )
+
+[node name="bkill21" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 244, -344 )
+
+[node name="jump_pickup13" parent="tile_spawner" instance=ExtResource( 5 )]
+position = Vector2( 148, -264 )
+
+[node name="destrutible_right5" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 244, -248 )
+
+[node name="bkill22" parent="tile_spawner" instance=ExtResource( 4 )]
+position = Vector2( 68, -152 )
+
+[node name="destrutible8" parent="tile_spawner" instance=ExtResource( 10 )]
+position = Vector2( 52, -104 )
+
+[node name="entities_tilemap" type="TileMap" parent="."]
+tile_set = SubResource( 14 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -6094854, 1, 0, -5963782, 0, 0, -6029307, 1, 0, -5898247, 4, 0, -5832699, 0, 0, -5701638, 1, 0, -5767163, 3, 0, -5505030, 0, 0, -5439495, 4, 0, -5505019, 1, 0, -5373947, 0, 0, -5177350, 1, 0, -5242874, 2, 0, -4980742, 0, 0, -4915207, 4, 0, -4915201, 1, 0, -4849665, 1, 0, -4784129, 1, 0, -4718593, 1, 0, -4653060, 0, 0, -4653057, 1, 0, -4390913, 1, 0, -4259843, 0, 0, -4194305, 3, 0, -3932166, 1, 0, -3801095, 4, 0, -3735556, 0, 0, -3407873, 1, 0, -3211267, 0, 0, -3211265, 3, 0, -2949126, 1, 0, -3014651, 1, 0, -2949115, 1, 0, -2818055, 4, 0, -2883579, 1, 0, -2818043, 1, 0, -2752507, 1, 0, -2228225, 0, 0, -2228219, 3, 0, -1966086, 1, 0, -1638401, 0, 0, -1703936, 0, 0, -1572871, 4, 0, -1441787, 1, 0, -1048577, 0, 0, -1048571, 3, 0, -589830, 1, 0, -393223, 4, 0 )
 
 [node name="camera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 497.793, 501.046 )
-vertical_speed = 250
+vertical_speed = 150
 
 [node name="Label" type="Label" parent="camera"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 194.207
-margin_top = -493.046
-margin_right = 487.207
-margin_bottom = -211.046
+margin_left = -52.547
+margin_top = -173.254
+margin_right = 55.453
+margin_bottom = -108.254
 custom_fonts/font = ExtResource( 7 )
 text = "score : 0
 "
@@ -45,76 +590,15 @@ __meta__ = {
 
 [node name="screen_shake" parent="camera" instance=ExtResource( 9 )]
 
-[node name="bkills" type="Node2D" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="camera"]
 
-[node name="bkill" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, -525.949 )
+[node name="ParallaxLayer" type="ParallaxLayer" parent="camera/ParallaxBackground"]
+motion_scale = Vector2( 0.01, 0.01 )
 
-[node name="bkill2" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 533.043, -200.681 )
-
-[node name="bkill3" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, -690.964 )
-
-[node name="bkill4" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 534.63, -898.818 )
-
-[node name="bkill5" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, -1065.42 )
-
-[node name="bkill6" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 534.63, -1238.37 )
-
-[node name="bkill7" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 212.535, -1433.53 )
-
-[node name="bkill9" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 210.948, -1655.66 )
-
-[node name="bkill10" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 534.574, -1794.56 )
-
-[node name="bkill11" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 209.516, -1889.07 )
-
-[node name="bkill13" parent="bkills" instance=ExtResource( 4 )]
-position = Vector2( 210.805, -2179.55 )
-
-[node name="pickups" type="Node2D" parent="."]
-
-[node name="jump_pickup" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 368.941, -145.278 )
-
-[node name="jump_pickup5" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 372.586, -351.038 )
-
-[node name="jump_pickup6" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 368.485, -956.862 )
-
-[node name="jump_pickup7" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 367.312, -1344.75 )
-
-[node name="jump_pickup8" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 365.838, -2314.15 )
-
-[node name="jump_pickup2" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 368.076, -813.403 )
-
-[node name="jump_pickup3" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 363.532, -1183.75 )
-
-[node name="jump_pickup4" parent="pickups" instance=ExtResource( 5 )]
-position = Vector2( 365.804, -1790.4 )
-
-[node name="destructibles" type="Node2D" parent="."]
-
-[node name="destrutible" parent="destructibles" instance=ExtResource( 10 )]
-position = Vector2( 608.854, -3.52161 )
-
-[node name="destrutible2" parent="destructibles" instance=ExtResource( 10 )]
-position = Vector2( 138.074, -889.38 )
-
-[node name="destrutible3" parent="destructibles" instance=ExtResource( 10 )]
-position = Vector2( 139.585, -2042.76 )
+[node name="skybox" type="Sprite" parent="camera/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 6.46179, -321.797 )
+texture = ExtResource( 12 )
+offset = Vector2( 0, 300 )
 [connection signal="landed" from="player" to="camera" method="shake"]
 [connection signal="scored" from="player" to="camera/Label" method="_on_player_scored"]
+[connection signal="started_climbing" from="player" to="camera" method="_on_player_started_climbing"]

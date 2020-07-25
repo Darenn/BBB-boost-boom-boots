@@ -5,9 +5,16 @@ export(float) var shake_duration = 0.2
 export(int) var shake_frequency = 15
 export(int) var shake_amplitude = 16
 
+var _started_climbing = false
+
 func _process(delta: float) -> void:
-	position += vertical_speed * Vector2.UP * delta
+	if _started_climbing:
+		position += vertical_speed * Vector2.UP * delta
 	
 	
 func shake():
 	$screen_shake.start(shake_duration, shake_frequency, shake_amplitude)
+
+
+func _on_player_started_climbing() -> void:
+	_started_climbing = true

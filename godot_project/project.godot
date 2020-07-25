@@ -301,14 +301,14 @@ SlowTimeEffect="*res://effects/slow_time/slow_time.tscn"
 
 [display]
 
-window/size/width=1000
-window/size/height=1000
+window/size/width=256
+window/size/height=342
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "silent_wolf" )
+enabled=PoolStringArray( "silent_wolf", "tile_spawner" )
 
 [input]
 
@@ -320,7 +320,8 @@ jump={
 }
 restart={
 "deadzone": 0.5,
-"events": [  ]
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [layer_names]
@@ -332,6 +333,7 @@ restart={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 quality/shadows/filter_mode=0

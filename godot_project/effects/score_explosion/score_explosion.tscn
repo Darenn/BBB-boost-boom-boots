@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://effects/score_explosion/score_explosion.gd" type="Script" id=1]
+[ext_resource path="res://audio/random_audio_stream_player/random_audio_stream_player_2D.gd" type="Script" id=2]
+[ext_resource path="res://audio/sfx/Pickup_Coin32.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/sfx/Pickup_Coin25.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/sfx/Pickup_Coin27.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/sfx/Pickup_Coin29.wav" type="AudioStream" id=6]
+[ext_resource path="res://fonts/test_font_small.tres" type="DynamicFont" id=7]
+
+[node name="score_explosion" type="Label"]
+margin_right = 114.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0.988235, 0.0627451, 1 )
+text = "+10"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RandomAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource( 2 )
+streams = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ) ]
+random_strategy = 2
+randomize_volume = true
+volume_min = -3.0
+volume_max = 0.0
+randomize_pitch = true
+pitch_min = 0.8
+pitch_max = 1.1
