@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://effects/background/building_back.tscn" type="PackedScene" id=1]
+
+[node name="building_back_3" instance=ExtResource( 1 )]
+region_rect = Rect2( 65, 160, 35, 90 )

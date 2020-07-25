@@ -6,7 +6,8 @@ export(int) var score_reward = 10
 const score_explosion = preload("res://effects/score_explosion/score_explosion.tscn")
 
 func _ready() -> void:
-	$Sprite.frame = randi() % 7
+	pass
+#	$Sprite.frame = randi() % 7
 
 func _on_jump_pickup_body_entered(body: Node) -> void:
 	if body is Player:

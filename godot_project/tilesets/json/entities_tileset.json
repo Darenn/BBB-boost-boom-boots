@@ -1,7 +1,10 @@
 {
-    "bkill": {
+    "bkill_right": {
          "scene": "res://_entities/bkill/bkill.tscn"
     },
+    "bkill_left": {
+        "scene": "res://_entities/bkill/bkill_right.tscn"
+   },
     "jump_pickup": {
          "scene": "res://_entities/jump_pickup/jump_pickup.tscn"
     },

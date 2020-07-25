@@ -4,7 +4,7 @@
 [ext_resource path="res://_entities/destructible/destructible.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.2287, 16.9465 )
+extents = Vector2( 12.5195, 16.9465 )
 
 [node name="destrutible" type="Area2D"]
 script = ExtResource( 2 )
@@ -12,9 +12,11 @@ score_reward = 20
 
 [node name="remover_pl" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+offset = Vector2( -8, 0 )
 vframes = 8
-hframes = 10
-frame = 4
+hframes = 8
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.28815, -0.460711 )
 shape = SubResource( 1 )
