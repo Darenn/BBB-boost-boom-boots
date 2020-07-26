@@ -14,13 +14,14 @@
 [ext_resource path="res://effects/background/background.tscn" type="PackedScene" id=12]
 [ext_resource path="res://_entities/player/remover_pl.png" type="Texture" id=13]
 [ext_resource path="res://gui/hud/score_label.gd" type="Script" id=14]
-[ext_resource path="res://tilesets/background.png" type="Texture" id=15]
+[ext_resource path="res://textures/background.png" type="Texture" id=15]
 [ext_resource path="res://effects/background/building_back_4.tscn" type="PackedScene" id=18]
 [ext_resource path="res://effects/background/building_back_2.tscn" type="PackedScene" id=19]
 [ext_resource path="res://effects/background/building_back.tscn" type="PackedScene" id=20]
 [ext_resource path="res://effects/background/building_back_3.tscn" type="PackedScene" id=21]
 [ext_resource path="res://gui/hud/name_edit.gd" type="Script" id=24]
 [ext_resource path="res://gui/hud/ads_table.png" type="Texture" id=26]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 22

@@ -15,7 +15,7 @@ func _on_jump_pickup_body_entered(body: Node) -> void:
 		body.on_boost_jump(speed_boost, score_reward)
 		var instance = score_explosion.instance()
 		get_tree().get_root().get_node("main").add_child(instance)
-		instance.rect_position = global_position + Vector2(0, -10)
+		instance.rect_position = global_position + Vector2(0, -32)
 		var combo: int = get_tree().get_root().get_node("main/player").combo
 		var res = score_reward * combo
 		instance.text = "+%s" % res

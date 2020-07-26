@@ -10,8 +10,8 @@ signal died
 export(int) var jump_speed = 1000
 export(int) var vertical_speed = 500
 export(int) var fall_speed = 10
-export(int) var starting_jump_count = 3
-export(int) var max_jump_count = 2
+export(int) var starting_jump_count = 5
+export(int) var max_jump_count = 5
 export(float) var jump_slow_motion_duration = 0.05
 export(float) var jump_slow_motion_strength = -0.05
 export(float) var time_combo = 1
@@ -96,6 +96,8 @@ func _unhandled_input(event):
 
 func _physics_process(_delta: float) -> void:
 	if (_is_climbing):
+		if not _game_over:
+			_vertical_speed = vertical_speed
 		move_and_slide(_vertical_speed * Vector2.UP)
 	elif _is_dead:
 		move_and_slide(fall_speed * Vector2.DOWN)
@@ -161,6 +163,8 @@ func play_anim_jump():
 	$Sprite.speed_scale = 1.5
 	$Sprite.play("jump")
 	yield($Sprite, "animation_finished")
+	if _game_over:
+		return
 	$Sprite.speed_scale = 1
 	$Sprite.play("fly")
 	
@@ -168,6 +172,8 @@ func play_anim_land():
 	$Sprite.speed_scale = 4
 	$Sprite.play("landing")
 	yield($Sprite, "animation_finished")
+	if _game_over:
+		return
 	$Sprite.speed_scale = 3
 	$Sprite.play("run")
 		
@@ -203,4 +209,4 @@ func on_end() -> void:
 	$Sprite.play("falling")
 	yield($tween_end, "tween_completed")
 	$Sprite.flip_h = true
-	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, -900, 5)
+	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, -4000, 10)

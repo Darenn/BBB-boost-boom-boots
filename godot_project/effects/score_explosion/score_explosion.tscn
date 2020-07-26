@@ -9,8 +9,10 @@
 [ext_resource path="res://fonts/test_font_small.tres" type="DynamicFont" id=7]
 
 [node name="score_explosion" type="Label"]
+margin_left = -1.23978e-05
+margin_top = -368.159
 margin_right = 318.0
-margin_bottom = 137.0
+margin_bottom = -231.159
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "+10"

@@ -147,7 +147,6 @@ script = ExtResource( 5 )
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 1.00595, 1.00595 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreSpaceSplashScreen"]

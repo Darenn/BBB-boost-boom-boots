@@ -340,6 +340,10 @@ restart={
 2d_physics/layer_4="pickups"
 2d_physics/layer_5="ads"
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [node]
 
 name_casing=2
