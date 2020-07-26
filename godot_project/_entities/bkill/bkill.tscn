@@ -9,6 +9,7 @@ extents = Vector2( 6.52433, 7.69162 )
 [node name="bkill" type="Area2D" groups=[
 "killers",
 ]]
+modulate = Color( 1.11373, 0.0392157, 0.0392157, 1 )
 collision_layer = 4
 script = ExtResource( 2 )
 

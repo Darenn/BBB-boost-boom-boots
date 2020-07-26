@@ -204,6 +204,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://utils/splash_screen/splash_screen_item.gd"
 }, {
+"base": "Node2D",
+"class": "SpriteTrail",
+"language": "GDScript",
+"path": "res://addons/sprite_trail/SpriteTrail.gd"
+}, {
 "base": "ReferenceRect",
 "class": "SyndiBox",
 "language": "GDScript",
@@ -279,6 +284,7 @@ _global_script_class_icons={
 "SlowTime": "",
 "SplashScreen": "",
 "SplashScreenItem": "",
+"SpriteTrail": "",
 "SyndiBox": "res://dialogs/syndibox/icon.png",
 "Tracery": "",
 "Trail2D": "res://addons/godot-next/icons/icon_trail_2d.svg",

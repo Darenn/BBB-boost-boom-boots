@@ -475,12 +475,15 @@ source_tilemap = NodePath("../entities_tilemap")
 mapping = "res://tilesets/json/entities_tileset.json"
 
 [node name="bkill_right" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 76, -3888 )
 
 [node name="bkill_right2" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -3888 )
 
 [node name="bkill_right3" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 140, -3888 )
 
 [node name="bkill" parent="tile_spawner" instance=ExtResource( 4 )]
@@ -493,9 +496,11 @@ position = Vector2( 204, -3888 )
 position = Vector2( 236, -3888 )
 
 [node name="bkill_right4" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 76, -3632 )
 
 [node name="bkill_right5" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -3632 )
 
 [node name="jump_pickup" parent="tile_spawner" instance=ExtResource( 5 )]
@@ -517,9 +522,11 @@ position = Vector2( 204, -3312 )
 position = Vector2( 236, -3312 )
 
 [node name="bkill_right6" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 76, -3088 )
 
 [node name="bkill_right7" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -3088 )
 
 [node name="jump_pickup3" parent="tile_spawner" instance=ExtResource( 5 )]
@@ -535,6 +542,7 @@ position = Vector2( 204, -2928 )
 position = Vector2( 236, -2928 )
 
 [node name="bkill_right8" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 76, -2736 )
 
 [node name="jump_pickup5" parent="tile_spawner" instance=ExtResource( 5 )]
@@ -551,6 +559,7 @@ position = Vector2( 76, -2544 )
 position = Vector2( 172, -2512 )
 
 [node name="bkill_right9" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 76, -2448 )
 
 [node name="destrutible" parent="tile_spawner" instance=ExtResource( 10 )]
@@ -564,6 +573,7 @@ modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 172, -2288 )
 
 [node name="bkill_right10" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 76, -2256 )
 
 [node name="bkill12" parent="tile_spawner" instance=ExtResource( 4 )]
@@ -573,6 +583,7 @@ position = Vector2( 172, -2160 )
 position = Vector2( 76, -2096 )
 
 [node name="bkill_right11" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -2032 )
 
 [node name="destrutible_right3" parent="tile_spawner" instance=ExtResource( 17 )]
@@ -580,6 +591,7 @@ modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 172, -2000 )
 
 [node name="bkill_right12" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -1936 )
 
 [node name="bkill13" parent="tile_spawner" instance=ExtResource( 4 )]
@@ -592,6 +604,7 @@ position = Vector2( 108, -1872 )
 position = Vector2( 172, -1808 )
 
 [node name="bkill_right13" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -1744 )
 
 [node name="destrutible_right4" parent="tile_spawner" instance=ExtResource( 17 )]
@@ -605,6 +618,7 @@ position = Vector2( 108, -1680 )
 position = Vector2( 172, -1584 )
 
 [node name="bkill_right14" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -1520 )
 
 [node name="jump_pickup8" parent="tile_spawner" instance=ExtResource( 5 )]
@@ -624,15 +638,18 @@ modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 204, -1296 )
 
 [node name="bkill_right15" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -1200 )
 
 [node name="bkill_right16" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -1168 )
 
 [node name="jump_pickup9" parent="tile_spawner" instance=ExtResource( 5 )]
 position = Vector2( 204, -1168 )
 
 [node name="bkill_right17" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -1136 )
 
 [node name="bkill18" parent="tile_spawner" instance=ExtResource( 4 )]
@@ -643,12 +660,14 @@ modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 204, -1072 )
 
 [node name="bkill_right18" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -976 )
 
 [node name="jump_pickup10" parent="tile_spawner" instance=ExtResource( 5 )]
 position = Vector2( 204, -976 )
 
 [node name="bkill_right19" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -944 )
 
 [node name="bkill19" parent="tile_spawner" instance=ExtResource( 4 )]
@@ -658,6 +677,7 @@ position = Vector2( 204, -912 )
 position = Vector2( 108, -880 )
 
 [node name="bkill_right20" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -784 )
 
 [node name="jump_pickup12" parent="tile_spawner" instance=ExtResource( 5 )]
@@ -667,6 +687,7 @@ position = Vector2( 172, -784 )
 position = Vector2( 204, -720 )
 
 [node name="bkill_right21" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -656 )
 
 [node name="jump_pickup13" parent="tile_spawner" instance=ExtResource( 5 )]
@@ -679,6 +700,7 @@ position = Vector2( 108, -592 )
 position = Vector2( 204, -592 )
 
 [node name="bkill_right22" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -528 )
 
 [node name="jump_pickup14" parent="tile_spawner" instance=ExtResource( 5 )]
@@ -691,6 +713,7 @@ position = Vector2( 204, -368 )
 position = Vector2( 204, -272 )
 
 [node name="bkill_right23" parent="tile_spawner" instance=ExtResource( 22 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 108, -208 )
 
 [node name="destrutible6" parent="tile_spawner" instance=ExtResource( 10 )]

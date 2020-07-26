@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://_entities/player/player.gd" type="Script" id=1]
 [ext_resource path="res://_entities/player/character-Sheet.png" type="Texture" id=2]
@@ -7,6 +7,80 @@
 [ext_resource path="res://audio/sfx/mixed_explosion.wav" type="AudioStream" id=5]
 [ext_resource path="res://audio/sfx/landing_2.wav" type="AudioStream" id=6]
 [ext_resource path="res://audio/sfx/Explosion103.wav" type="AudioStream" id=7]
+[ext_resource path="res://addons/sprite_trail/SpriteTrail.gd" type="Script" id=8]
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 2 )
+region = Rect2( 448, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 2 )
+region = Rect2( 128, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 128, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 24 ), SubResource( 25 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": true,
+"name": "fly",
+"speed": 5.0
+} ]
+
+[sub_resource type="Gradient" id=37]
+colors = PoolColorArray( 0, 0, 0, 0, 0.666667, 0.0117647, 0.0117647, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.5633, 4.27822 )
@@ -66,16 +140,24 @@ collision_mask = 30
 script = ExtResource( 1 )
 jump_speed = 250
 vertical_speed = 130
-fall_speed = 100
+fall_speed = 150
 jump_slow_motion_duration = 0.15
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.407255, 9.53674e-06 )
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
-vframes = 8
-hframes = 9
+frames = SubResource( 23 )
+animation = "idle"
+frame = 1
+playing = true
+
+[node name="node_2d" type="Node2D" parent="Sprite"]
+script = ExtResource( 8 )
+active = true
+life_time = 0.5
+copy_period = 0.1
+gradient = SubResource( 37 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

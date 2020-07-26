@@ -30,7 +30,9 @@ onready var _jump_count = max_jump_count
 
 
 func _ready() -> void:
-	$AnimationPlayer.play("idle", -1, 0.5)
+	$Sprite.speed_scale = 0.5
+	$Sprite.play("idle")
+#	$AnimationPlayer.play("idle", -1, 0.5)
 
 
 func _process(delta: float) -> void:
@@ -40,15 +42,17 @@ func _process(delta: float) -> void:
 		else:
 			$Sprite.flip_v = true
 		var collision:KinematicCollision2D = move_and_collide(jump_speed * _direction * delta)
-		if collision:
+		if collision and not _is_dead:
 			_is_jumping = false
 			
 			if _direction == Vector2.LEFT:
 				$Sprite.flip_v = true
 			else:
 				$Sprite.flip_v = false
-				
-			$AnimationPlayer.play("run", -1, 1)
+			
+			$Sprite.speed_scale = 3
+			$Sprite.play("run")
+#			$AnimationPlayer.play("run", -1, 1)
 			$Sprite.rotation_degrees = -90
 			$LandingAudioPlayer.play()
 			
@@ -104,7 +108,9 @@ func _jump() -> void:
 		_direction = -_direction
 #		_jump_count -= 1 NOT THAT GOOD
 		
-		$AnimationPlayer.play("fly")
+		$Sprite.speed_scale = 1
+		$Sprite.play("fly")
+#		$AnimationPlayer.play("fly")
 		$JumpAudioPlayer.play()
 
 		emit_signal("jumped")
@@ -124,10 +130,13 @@ func die() -> void:
 	_is_dead = true
 	_is_climbing = false
 	_vertical_speed = fall_speed
-	$AnimationPlayer.play("fly")
+	$Sprite.speed_scale = 1
+	$Sprite.play("fly")
+#	$AnimationPlayer.play("fly")
 	$HurtAudioPlayer.play()
 	# TODO cancel combo
 	score -= 100
 	score = max(0, score)
+	SlowTimeEffect.start(1, jump_slow_motion_strength)
 	emit_signal("scored", score)
 	emit_signal("died")

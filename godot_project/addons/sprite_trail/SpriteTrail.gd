@@ -1,4 +1,5 @@
 tool
+class_name SpriteTrail
 extends Node2D
 
 # Author: Luiz Lopes (youtube.com/CanalPalco)
