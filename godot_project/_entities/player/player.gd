@@ -194,6 +194,7 @@ func die() -> void:
 	emit_signal("died")
 
 func on_end() -> void:
+	SilentWolf.Scores.persist_score(NameEntry.player_name, score)
 	_game_over = true
 	$CollisionShape2D.set_deferred("disabled", true)
 	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, 0, 5)
