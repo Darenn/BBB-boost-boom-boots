@@ -5,7 +5,7 @@
 [ext_resource path="res://utils/splash_screen/Godot_logo.svg" type="Texture" id=3]
 [ext_resource path="res://utils/splash_screen/logo_darenn_good.png" type="Texture" id=4]
 [ext_resource path="res://utils/splash_screen/splash_screen_item.gd" type="Script" id=5]
-[ext_resource path="res://gui/menus/my_leaderboard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/main.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -147,7 +147,7 @@ script = ExtResource( 5 )
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 1.00595, 1.00595 )
 frames = SubResource( 11 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreSpaceSplashScreen"]

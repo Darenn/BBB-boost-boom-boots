@@ -297,13 +297,14 @@ _global_script_class_icons={
 [application]
 
 config/name="space_score_jam_9"
-run/main_scene="res://levels/main.tscn"
+run/main_scene="res://utils/splash_screen/splash_screen.tscn"
 config/icon="res://camera/box_cam_2D/icon.png"
 
 [autoload]
 
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 SlowTimeEffect="*res://effects/slow_time/slow_time.tscn"
+NameEntry="*res://autoload/name_entry.gd"
 
 [display]
 

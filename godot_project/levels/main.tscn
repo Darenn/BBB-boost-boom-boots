@@ -1,16 +1,19 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://tilesets/entities_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://_entities/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://_entities/camera/camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/hud/ads_table.png" type="Texture" id=4]
 [ext_resource path="res://_entities/jump_pickup/jump_pickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/main.gd" type="Script" id=6]
 [ext_resource path="res://fonts/test_fon_hudt.tres" type="DynamicFont" id=7]
 [ext_resource path="res://gui/hud/score_gui.gd" type="Script" id=8]
 [ext_resource path="res://camera/screen_shake/ScreenShake.tscn" type="PackedScene" id=9]
+[ext_resource path="res://fonts/m5x7.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://addons/tile_spawner/tile_spawner.gd" type="Script" id=11]
 [ext_resource path="res://effects/background/background.tscn" type="PackedScene" id=12]
 [ext_resource path="res://_entities/player/remover_pl.png" type="Texture" id=13]
+[ext_resource path="res://gui/hud/score_label.gd" type="Script" id=14]
 [ext_resource path="res://tilesets/background.png" type="Texture" id=15]
 [ext_resource path="res://_entities/bkill/bkill.tscn" type="PackedScene" id=16]
 [ext_resource path="res://_entities/destructible/destructible_right.tscn" type="PackedScene" id=17]
@@ -20,13 +23,26 @@
 [ext_resource path="res://effects/background/building_back_3.tscn" type="PackedScene" id=21]
 [ext_resource path="res://_entities/bkill/bkill_right.tscn" type="PackedScene" id=22]
 [ext_resource path="res://_entities/destructible/destructible.tscn" type="PackedScene" id=23]
+[ext_resource path="res://gui/hud/name_edit.gd" type="Script" id=24]
+
+[sub_resource type="DynamicFont" id=17]
+size = 22
+font_data = ExtResource( 10 )
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
+dof_blur_far_distance = 0.88
+dof_blur_far_transition = 0.27
+dof_blur_far_amount = 0.14
+dof_blur_far_quality = 2
+dof_blur_near_distance = 1.04
 glow_enabled = true
 glow_bloom = 0.43
 glow_blend_mode = 0
 glow_hdr_threshold = 0.68
+adjustment_brightness = 2.19
+adjustment_contrast = 2.95
+adjustment_saturation = 5.55
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -344,11 +360,46 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 32, 38, 32 ]
+"values": [ 32, 36, 32 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ads_table:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.611765, 0.611765, 0.611765, 1 ), Color( 1, 1.16, 1, 1 ), Color( 0.611765, 0.611765, 0.611765, 1 ) ]
 }
 
 [node name="main" type="Node2D"]
 script = ExtResource( 6 )
+
+[node name="label" type="Label" parent="."]
+margin_left = -97.0
+margin_top = -199.0
+margin_right = 98.0
+margin_bottom = 189.0
+custom_fonts/font = SubResource( 17 )
+text = "TOP 10
+
+
+LOADING"
+align = 1
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ads_table" type="Sprite" parent="label"]
+modulate = Color( 0.623529, 0.623529, 0.623529, 1 )
+show_behind_parent = true
+position = Vector2( 96.6052, 199.065 )
+scale = Vector2( 0.479713, 2.8321 )
+texture = ExtResource( 4 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -861,6 +912,7 @@ vertical_speed = 190
 fall_speed = 100
 
 [node name="UI_back" type="Sprite" parent="camera"]
+visible = false
 modulate = Color( 0.25098, 0.611765, 0, 1 )
 show_behind_parent = true
 position = Vector2( 0.142467, 307.14 )
@@ -870,10 +922,10 @@ texture = ExtResource( 13 )
 [node name="score" type="Label" parent="camera"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -245.163
-margin_top = 275.857
-margin_right = -61.1628
-margin_bottom = 380.857
+margin_left = -169.163
+margin_top = 256.708
+margin_right = 14.8371
+margin_bottom = 361.708
 custom_fonts/font = ExtResource( 7 )
 text = "score : 0
 "
@@ -882,12 +934,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ads_table" type="Sprite" parent="camera/score"]
+modulate = Color( 0.592157, 0.592157, 0.592157, 1 )
+show_behind_parent = true
+position = Vector2( 165.874, 42.0347 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+
 [node name="combo" type="Label" parent="camera/score"]
-margin_left = 442.738
-margin_right = 490.738
+margin_left = 222.738
+margin_right = 318.738
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 7 )
-text = "x1"
+text = "combo x1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -910,77 +969,62 @@ scale = Vector2( 2.18915, 2.94304 )
 [node name="building_back_6" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 18 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 14.1267, -69.8316 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back_11" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 21 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 69.6904, -65.7043 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back6" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -79.5758, -65.059 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back5" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -27.1737, -48.3252 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back11" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -9.86781, -7.31406 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back9" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 50.9384, -67.4331 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back8" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -69.0599, -30.2123 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back10" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -35.4464, -92.9751 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back7" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 24.901, -27.1935 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back_10" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 19 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 37.5731, -60.2878 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back_15" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 19 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 68.9103, -30.2385 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back_16" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 19 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -26.1745, -20.1505 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back_14" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 19 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -57.2521, -83.008 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back_12" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 19 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -11.1055, -73.4952 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="building_back_13" parent="camera/ParallaxBackground/ParallaxLayer3" instance=ExtResource( 19 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 90.4025, -76.1367 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="camera/ParallaxBackground"]
 motion_scale = Vector2( 0.005, 0.005 )
@@ -988,30 +1032,37 @@ motion_scale = Vector2( 0.005, 0.005 )
 [node name="building_back_5" parent="camera/ParallaxBackground/ParallaxLayer2" instance=ExtResource( 18 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 0.541962, -26.0575 )
+scale = Vector2( 2, 2 )
 
 [node name="building_back_9" parent="camera/ParallaxBackground/ParallaxLayer2" instance=ExtResource( 21 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -39.2686, -39.0688 )
+scale = Vector2( 2, 2 )
 
 [node name="building_back3" parent="camera/ParallaxBackground/ParallaxLayer2" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -88.9908, -12.6061 )
+scale = Vector2( 2, 2 )
 
 [node name="building_back5" parent="camera/ParallaxBackground/ParallaxLayer2" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( -37.6961, 11.8264 )
+scale = Vector2( 2, 2 )
 
 [node name="building_back4" parent="camera/ParallaxBackground/ParallaxLayer2" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 91.6925, -30.2111 )
+scale = Vector2( 2, 2 )
 
 [node name="building_back6" parent="camera/ParallaxBackground/ParallaxLayer2" instance=ExtResource( 20 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 12.0818, 15.5581 )
+scale = Vector2( 2, 2 )
 
 [node name="building_back_8" parent="camera/ParallaxBackground/ParallaxLayer2" instance=ExtResource( 19 )]
 modulate = Color( 0.145098, 0.141176, 0.141176, 1 )
 position = Vector2( 45.1201, -32.7399 )
+scale = Vector2( 2, 2 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="camera/ParallaxBackground"]
 motion_scale = Vector2( 0.009, 0.009 )
@@ -1019,25 +1070,41 @@ motion_scale = Vector2( 0.009, 0.009 )
 [node name="building_back_4" parent="camera/ParallaxBackground/ParallaxLayer" instance=ExtResource( 18 )]
 modulate = Color( 0.258824, 0.25098, 0.25098, 1 )
 position = Vector2( 92.3122, 46.966 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 
 [node name="building_back_6" parent="camera/ParallaxBackground/ParallaxLayer" instance=ExtResource( 21 )]
 modulate = Color( 0.258824, 0.25098, 0.25098, 1 )
 position = Vector2( 10.3321, 58.2036 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 
 [node name="building_back2" parent="camera/ParallaxBackground/ParallaxLayer" instance=ExtResource( 20 )]
 modulate = Color( 0.258824, 0.25098, 0.25098, 1 )
 position = Vector2( 46.3287, 66.9035 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 
 [node name="building_back_7" parent="camera/ParallaxBackground/ParallaxLayer" instance=ExtResource( 19 )]
 modulate = Color( 0.258824, 0.25098, 0.25098, 1 )
 position = Vector2( -53.9853, 73.1772 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
+
+[node name="line_edit" type="LineEdit" parent="camera"]
+margin_left = -126.0
+margin_top = 124.0
+margin_right = 135.0
+margin_bottom = 151.0
+max_length = 10
+context_menu_enabled = false
+shortcut_keys_enabled = false
+placeholder_text = "Enter your name here"
+caret_blink = true
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 96.5722, 105.086 )
+[connection signal="text_entered" from="camera/line_edit" to="camera/line_edit" method="_on_line_edit_text_entered"]
 [connection signal="died" from="player" to="camera" method="_on_player_died"]
 [connection signal="landed" from="player" to="camera" method="shake"]
 [connection signal="scored" from="player" to="camera/score" method="_on_player_scored"]
