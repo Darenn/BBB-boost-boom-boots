@@ -24,6 +24,6 @@ func _on_jump_pickup_body_entered(body: Node) -> void:
 		inst.amount = 10
 		inst.initial_velocity /= 2
 		
-		SlowTimeEffect.start(0.1, 0.5)
+#		SlowTimeEffect.start(0.1, 0.5)
 		
 		queue_free()

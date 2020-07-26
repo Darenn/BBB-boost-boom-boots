@@ -1,7 +1,7 @@
 class_name Player
 extends KinematicBody2D
 
-signal scored(score)
+signal scored(score, combo)
 signal jumped
 signal landed
 signal started_climbing
@@ -11,13 +11,15 @@ export(int) var jump_speed = 1000
 export(int) var vertical_speed = 500
 export(int) var fall_speed = 10
 export(int) var starting_jump_count = 3
-export(int) var max_jump_count = 3
-export(float) var jump_slow_motion_duration = 0.2
-export(float) var jump_slow_motion_strength = 0.9
+export(int) var max_jump_count = 2
+export(float) var jump_slow_motion_duration = 0.1
+export(float) var jump_slow_motion_strength = 0.5
+export(float) var time_combo = 1
 const jump_explosion_scene = preload("res://effects/jump_explosion/jump_explosion.tscn")
 const landing_effect = preload("res://effects/landing_effect/landing_effect.tscn")
 
 var score = 0
+var combo = 1
 
 var _direction = Vector2.RIGHT
 var _is_jumping = false
@@ -62,7 +64,7 @@ func _process(delta: float) -> void:
 			get_tree().get_root().get_node("main").add_child(inst)
 			inst.global_position = collision.position
 			inst.modulate = Color(0.5, 0.5, 0.5)
-			
+			SlowTimeEffect.start(0.2, 0.5)
 			emit_signal("landed")
 			
 	if Input.is_action_just_pressed("jump"):
@@ -70,6 +72,7 @@ func _process(delta: float) -> void:
 			emit_signal("started_climbing")
 			_is_climbing = true
 			_is_dead = false
+			$Sprite.flip_h = false
 		_jump()
 		
 	$Label.text = str(_jump_count)
@@ -95,23 +98,35 @@ func _physics_process(_delta: float) -> void:
 
 func on_pickup_jump(jump_reward: int, score_reward: int) -> void:
 	_jump_count = min(_jump_count + jump_reward, max_jump_count)
-	score += score_reward
-	emit_signal("scored", score)
+	score += score_reward * combo
+	combo += 1
+	_scored_since_last_stop_combo = true
+	emit_signal("scored", score, combo)
 	
 func on_destroying_destructibles(score_reward: int) -> void:
-	score += score_reward
-	emit_signal("scored", score)
+	score += score_reward * combo
+	combo += 1
+	_scored_since_last_stop_combo = true
+	emit_signal("scored", score, combo)
+	
+var _scored_since_last_stop_combo = false
+	
+func stop_combo():
+	_scored_since_last_stop_combo = false
+	yield(get_tree().create_timer(time_combo), "timeout")
+	if not _scored_since_last_stop_combo:
+		combo = 0
 
 func _jump() -> void:
 	if _jump_count > 0:
-		_is_jumping = true
 		_direction = -_direction
-#		_jump_count -= 1 NOT THAT GOOD
+#		_jump_count -= 1 NO REALLY YOU SHOULD NOPT
 		
 		$Sprite.speed_scale = 1
 		$Sprite.play("fly")
 #		$AnimationPlayer.play("fly")
 		$JumpAudioPlayer.play()
+		$Sprite.modulate = Color.white
 
 		emit_signal("jumped")
 		
@@ -119,14 +134,23 @@ func _jump() -> void:
 		get_tree().get_root().get_node("main").add_child(jump_explosion_instance)
 		jump_explosion_instance.position = position
 		
-		SlowTimeEffect.start(jump_slow_motion_duration, jump_slow_motion_strength)
+		if not _is_jumping:
+			SlowTimeEffect.start(jump_slow_motion_duration, jump_slow_motion_strength)
+		_is_jumping = true
 	else:
-		pass #todo engine sound
+		var jump_explosion_instance = jump_explosion_scene.instance()
+		get_tree().get_root().get_node("main").add_child(jump_explosion_instance)
+		jump_explosion_instance.position = position
+		jump_explosion_instance.modulate = Color(0.2,0.2,0.2)
+		jump_explosion_instance.scale = Vector2(0.5,0.5)
+		$NoJumpAudioPlayer.play()
 		
 		
 func die() -> void:
 	if _is_dead:
 		return
+	$Sprite.flip_h = true
+	combo = 1
 	_is_dead = true
 	_is_climbing = false
 	_vertical_speed = fall_speed
@@ -138,5 +162,8 @@ func die() -> void:
 	score -= 100
 	score = max(0, score)
 	SlowTimeEffect.start(1, jump_slow_motion_strength)
-	emit_signal("scored", score)
+	var old_color = $Sprite.modulate
+	$tween.interpolate_property($Sprite, "modulate", Color(255,255,255), old_color, 0.1)
+	$tween.start()
+	emit_signal("scored", score, combo)
 	emit_signal("died")

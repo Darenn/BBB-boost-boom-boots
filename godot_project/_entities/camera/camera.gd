@@ -3,8 +3,8 @@ extends Camera2D
 export(int) var vertical_speed = 500
 export(int) var fall_speed = 10
 export(float) var shake_duration = 0.1
-export(int) var shake_frequency = 15
-export(int) var shake_amplitude = 16
+export(int) var shake_frequency = 8
+export(int) var shake_amplitude = 10
 
 var _started_climbing = false
 var _is_falling = false
