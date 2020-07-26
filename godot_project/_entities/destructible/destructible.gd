@@ -5,12 +5,17 @@ export(int) var score_reward
 const score_explosion = preload("res://effects/score_explosion/score_explosion.tscn")
 const landing_effect = preload("res://effects/landing_effect/landing_effect.tscn")
 
+var _is_destroyed = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$animation_player.play("glowing")
 
 
 func destroy() -> void:
+	if _is_destroyed:
+		return
+	_is_destroyed = true
 	get_tree().get_root().get_node("main/player").on_destroying_destructibles(score_reward)
 	var instance = score_explosion.instance()
 	get_tree().get_root().get_node("main").add_child(instance)

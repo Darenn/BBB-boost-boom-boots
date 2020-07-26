@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://audio/musics/AnyConv.com__Cyber Streets.ogg" type="AudioStream" id=4]
+
+[node name="music_player" type="AudioStreamPlayer"]
+stream = ExtResource( 4 )
+autoplay = true

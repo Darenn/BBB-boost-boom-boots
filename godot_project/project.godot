@@ -305,6 +305,7 @@ config/icon="res://camera/box_cam_2D/icon.png"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 SlowTimeEffect="*res://effects/slow_time/slow_time.tscn"
 NameEntry="*res://autoload/name_entry.gd"
+MusicPlayer="*res://audio/music_player.tscn"
 
 [display]
 

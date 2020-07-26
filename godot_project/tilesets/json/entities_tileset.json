@@ -16,5 +16,8 @@
    },
    "destructible_left": {
         "scene": "res://_entities/destructible/destructible.tscn"
-    }
+    },
+    "boost": {
+     "scene": "res://_entities/boost/boost.tscn"
+ }
 }

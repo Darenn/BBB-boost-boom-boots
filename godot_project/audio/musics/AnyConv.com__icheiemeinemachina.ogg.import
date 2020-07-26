@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AnyConv.com__icheiemeinemachina.ogg-1187398278fad53aba6b1a16771561d2.oggstr"
+
+[deps]
+
+source_file="res://audio/musics/AnyConv.com__icheiemeinemachina.ogg"
+dest_files=[ "res://.import/AnyConv.com__icheiemeinemachina.ogg-1187398278fad53aba6b1a16771561d2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

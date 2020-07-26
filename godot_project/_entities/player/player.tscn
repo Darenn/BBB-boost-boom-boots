@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://_entities/player/player.gd" type="Script" id=1]
 [ext_resource path="res://_entities/player/character-Sheet.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://audio/sfx/Explosion103.wav" type="AudioStream" id=7]
 [ext_resource path="res://addons/sprite_trail/SpriteTrail.gd" type="Script" id=8]
 [ext_resource path="res://audio/sfx/no_more_jump.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/sfx/Powerup30.wav" type="AudioStream" id=10]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -62,6 +63,26 @@ region = Rect2( 128, 128, 64, 64 )
 atlas = ExtResource( 2 )
 region = Rect2( 192, 128, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 256, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 320, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 384, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 448, 128, 64, 64 )
+
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
@@ -77,6 +98,16 @@ animations = [ {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "fly",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 20 ) ],
+"loop": false,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
+"loop": false,
+"name": "landing",
 "speed": 5.0
 } ]
 
@@ -149,7 +180,6 @@ position = Vector2( -0.407255, 9.53674e-06 )
 rotation = -1.5708
 frames = SubResource( 14 )
 animation = "idle"
-playing = true
 
 [node name="node_2d" type="Node2D" parent="Sprite"]
 show_behind_parent = true
@@ -223,6 +253,17 @@ volume_db = 2.0
 pitch_scale = 1.1
 script = ExtResource( 4 )
 streams = [ ExtResource( 9 ) ]
+random_strategy = 0
+randomize_volume = false
+volume_min = 0.0
+volume_max = 0.0
+randomize_pitch = false
+pitch_min = 1.0
+pitch_max = 1.0
+
+[node name="BoostPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource( 4 )
+streams = [ ExtResource( 10 ) ]
 random_strategy = 0
 randomize_volume = false
 volume_min = 0.0

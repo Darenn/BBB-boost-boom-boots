@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AnyConv.com__The daily Grind.ogg-280f6f0fa8e55d32c2337b2cb40602ac.oggstr"
+
+[deps]
+
+source_file="res://audio/musics/AnyConv.com__The daily Grind.ogg"
+dest_files=[ "res://.import/AnyConv.com__The daily Grind.ogg-280f6f0fa8e55d32c2337b2cb40602ac.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

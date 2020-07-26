@@ -32,7 +32,7 @@ onready var _jump_count = max_jump_count
 
 
 func _ready() -> void:
-	$Sprite.speed_scale = 0.5
+	$Sprite.speed_scale = 0.3
 	$Sprite.play("idle")
 #	$AnimationPlayer.play("idle", -1, 0.5)
 
@@ -52,8 +52,7 @@ func _process(delta: float) -> void:
 			else:
 				$Sprite.flip_v = false
 			
-			$Sprite.speed_scale = 3
-			$Sprite.play("run")
+			play_anim_land()
 #			$AnimationPlayer.play("run", -1, 1)
 			$Sprite.rotation_degrees = -90
 			$LandingAudioPlayer.play()
@@ -67,7 +66,7 @@ func _process(delta: float) -> void:
 			SlowTimeEffect.start(0.2, 0.5)
 			emit_signal("landed")
 			
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and len(NameEntry.player_name) > 0:
 		if not _is_climbing:
 			emit_signal("started_climbing")
 			_is_climbing = true
@@ -82,11 +81,13 @@ func _process(delta: float) -> void:
 #		$Sprite.modulate = Color.green
 
 func _unhandled_input(event):
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenTouch and len(NameEntry.player_name) > 0:
 		if event.pressed:
 			if not _is_climbing:
 				emit_signal("started_climbing")
 				_is_climbing = true
+				_is_dead = false
+				$Sprite.flip_h = false
 			_jump()
 
 
@@ -109,6 +110,15 @@ func on_destroying_destructibles(score_reward: int) -> void:
 	_scored_since_last_stop_combo = true
 	emit_signal("scored", score, combo)
 	
+func on_boost_jump(jump_speed, score_reward) -> void:
+	score += score_reward * combo
+	combo += 1
+	vertical_speed += jump_speed
+	_vertical_speed += jump_speed
+	_scored_since_last_stop_combo = true
+	$BoostPlayer.play()
+	emit_signal("scored", score, combo)
+	
 var _scored_since_last_stop_combo = false
 	
 func stop_combo():
@@ -121,13 +131,11 @@ func _jump() -> void:
 	if _jump_count > 0:
 		_direction = -_direction
 		_jump_count -= 1 #NO REALLY YOU SHOULD NOPT
-		
-		$Sprite.speed_scale = 1
-		$Sprite.play("fly")
-#		$AnimationPlayer.play("fly")
+
+		play_anim_jump()
 		$JumpAudioPlayer.play()
 		$Sprite.modulate = Color.white
-
+		
 		emit_signal("jumped")
 		
 		var jump_explosion_instance = jump_explosion_scene.instance()
@@ -145,7 +153,20 @@ func _jump() -> void:
 		jump_explosion_instance.modulate = Color(0.2,0.2,0.2)
 		jump_explosion_instance.scale = Vector2(0.5,0.5)
 		$NoJumpAudioPlayer.play()
-		
+
+func play_anim_jump():
+	$Sprite.speed_scale = 1.5
+	$Sprite.play("jump")
+	yield($Sprite, "animation_finished")
+	$Sprite.speed_scale = 1
+	$Sprite.play("fly")
+	
+func play_anim_land():
+	$Sprite.speed_scale = 4
+	$Sprite.play("landing")
+	yield($Sprite, "animation_finished")
+	$Sprite.speed_scale = 3
+	$Sprite.play("run")
 		
 func die() -> void:
 	if _is_dead:
@@ -162,7 +183,7 @@ func die() -> void:
 	# TODO cancel combo
 	score -= 100
 	score = max(0, score)
-	SlowTimeEffect.start(1, jump_slow_motion_strength)
+	SlowTimeEffect.start(1, 0.9)
 	var old_color = $Sprite.modulate
 	$tween.interpolate_property($Sprite, "modulate", Color(255,255,255), old_color, 0.1)
 	$tween.start()
