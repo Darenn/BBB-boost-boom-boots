@@ -329,6 +329,12 @@ restart={
 2d_physics/layer_1="player"
 2d_physics/layer_2="walls"
 2d_physics/layer_3="killers"
+2d_physics/layer_4="pickups"
+2d_physics/layer_5="ads"
+
+[node]
+
+name_casing=2
 
 [rendering]
 

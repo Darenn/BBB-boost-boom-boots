@@ -5,6 +5,7 @@
 [node name="destrutible_right" instance=ExtResource( 1 )]
 
 [node name="remover_pl" parent="." index="0"]
+offset = Vector2( 8, 0 )
 frame = 4
 
 [node name="CollisionShape2D" parent="." index="1"]

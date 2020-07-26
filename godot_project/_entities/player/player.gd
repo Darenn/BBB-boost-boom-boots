@@ -5,59 +5,89 @@ signal scored(score)
 signal jumped
 signal landed
 signal started_climbing
+signal died
 
 export(int) var jump_speed = 1000
 export(int) var vertical_speed = 500
+export(int) var fall_speed = 10
 export(int) var starting_jump_count = 3
 export(int) var max_jump_count = 3
 export(float) var jump_slow_motion_duration = 0.2
 export(float) var jump_slow_motion_strength = 0.9
 const jump_explosion_scene = preload("res://effects/jump_explosion/jump_explosion.tscn")
+const landing_effect = preload("res://effects/landing_effect/landing_effect.tscn")
 
 var score = 0
 
 var _direction = Vector2.RIGHT
 var _is_jumping = false
 var _is_climbing = false
+var _is_dead = false
 
 
+onready var _vertical_speed = vertical_speed
 onready var _jump_count = max_jump_count 
 
 
 func _ready() -> void:
-	$AnimationPlayer.play("idle")
+	$AnimationPlayer.play("idle", -1, 0.5)
 
 
 func _process(delta: float) -> void:
 	if _is_jumping:
-		if move_and_collide(jump_speed * _direction * delta):
+		if _direction == Vector2.LEFT:
+			$Sprite.flip_v = false
+		else:
+			$Sprite.flip_v = true
+		var collision:KinematicCollision2D = move_and_collide(jump_speed * _direction * delta)
+		if collision:
 			_is_jumping = false
-			$AnimationPlayer.play("run")
-			$Sprite.rotation_degrees = -90
+			
 			if _direction == Vector2.LEFT:
 				$Sprite.flip_v = true
 			else:
 				$Sprite.flip_v = false
+				
+			$AnimationPlayer.play("run", -1, 1)
+			$Sprite.rotation_degrees = -90
 			$LandingAudioPlayer.play()
+			
 			_jump_count = max_jump_count
+			
+			var inst = landing_effect.instance()
+			get_tree().get_root().get_node("main").add_child(inst)
+			inst.global_position = collision.position
+			inst.modulate = Color(0.5, 0.5, 0.5)
+			
 			emit_signal("landed")
 			
 	if Input.is_action_just_pressed("jump"):
 		if not _is_climbing:
 			emit_signal("started_climbing")
 			_is_climbing = true
+			_is_dead = false
 		_jump()
 		
 	$Label.text = str(_jump_count)
-	if _jump_count == 0:
-		$Sprite.modulate = Color.orange
-	else:
-		$Sprite.modulate = Color.green
+#	if _jump_count == 0:
+#		$Sprite.modulate = Color.orange
+#	else:
+#		$Sprite.modulate = Color.green
+
+func _unhandled_input(event):
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			if not _is_climbing:
+				emit_signal("started_climbing")
+				_is_climbing = true
+			_jump()
 
 
 func _physics_process(_delta: float) -> void:
 	if (_is_climbing):
 		move_and_slide(vertical_speed * Vector2.UP)
+	elif _is_dead:
+		move_and_slide(fall_speed * Vector2.DOWN)
 
 func on_pickup_jump(jump_reward: int, score_reward: int) -> void:
 	_jump_count = min(_jump_count + jump_reward, max_jump_count)
@@ -72,7 +102,7 @@ func _jump() -> void:
 	if _jump_count > 0:
 		_is_jumping = true
 		_direction = -_direction
-		_jump_count -= 1
+#		_jump_count -= 1 NOT THAT GOOD
 		
 		$AnimationPlayer.play("fly")
 		$JumpAudioPlayer.play()
@@ -87,3 +117,17 @@ func _jump() -> void:
 	else:
 		pass #todo engine sound
 		
+		
+func die() -> void:
+	if _is_dead:
+		return
+	_is_dead = true
+	_is_climbing = false
+	_vertical_speed = fall_speed
+	$AnimationPlayer.play("fly")
+	$HurtAudioPlayer.play()
+	# TODO cancel combo
+	score -= 100
+	score = max(0, score)
+	emit_signal("scored", score)
+	emit_signal("died")
