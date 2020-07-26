@@ -25,6 +25,7 @@ var _direction = Vector2.RIGHT
 var _is_jumping = false
 var _is_climbing = false
 var _is_dead = false
+var _game_over = false
 
 
 onready var _vertical_speed = vertical_speed
@@ -38,6 +39,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if _game_over:
+		return
 	if _is_jumping:
 		if _direction == Vector2.LEFT:
 			$Sprite.flip_v = false
@@ -66,7 +69,7 @@ func _process(delta: float) -> void:
 			SlowTimeEffect.start(0.2, 0.5)
 			emit_signal("landed")
 			
-	if Input.is_action_just_pressed("jump") and len(NameEntry.player_name) > 0:
+	if Input.is_action_just_pressed("jump") and len(NameEntry.player_name) > 0 and not _game_over:
 		if not _is_climbing:
 			emit_signal("started_climbing")
 			_is_climbing = true
@@ -81,7 +84,7 @@ func _process(delta: float) -> void:
 #		$Sprite.modulate = Color.green
 
 func _unhandled_input(event):
-	if event is InputEventScreenTouch and len(NameEntry.player_name) > 0:
+	if event is InputEventScreenTouch and len(NameEntry.player_name) > 0 and not _game_over:
 		if event.pressed:
 			if not _is_climbing:
 				emit_signal("started_climbing")
@@ -93,7 +96,7 @@ func _unhandled_input(event):
 
 func _physics_process(_delta: float) -> void:
 	if (_is_climbing):
-		move_and_slide(vertical_speed * Vector2.UP)
+		move_and_slide(_vertical_speed * Vector2.UP)
 	elif _is_dead:
 		move_and_slide(fall_speed * Vector2.DOWN)
 
@@ -177,7 +180,7 @@ func die() -> void:
 	_is_climbing = false
 	_vertical_speed = fall_speed
 	$Sprite.speed_scale = 1
-	$Sprite.play("fly")
+	$Sprite.play("falling")
 #	$AnimationPlayer.play("fly")
 	$HurtAudioPlayer.play()
 	# TODO cancel combo
@@ -189,3 +192,14 @@ func die() -> void:
 	$tween.start()
 	emit_signal("scored", score, combo)
 	emit_signal("died")
+
+func on_end() -> void:
+	_game_over = true
+	$CollisionShape2D.set_deferred("disabled", true)
+	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, 0, 5)
+	$tween_end.start()
+	$Sprite.speed_scale = 0.5
+	$Sprite.play("falling")
+	yield($tween_end, "tween_completed")
+	$Sprite.flip_h = true
+	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, -900, 5)
