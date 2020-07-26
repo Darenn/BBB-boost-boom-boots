@@ -45,6 +45,7 @@ animations = [ {
 radius = 31.0632
 
 [node name="jump_explosion" type="Area2D"]
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="animated_sprite" type="AnimatedSprite" parent="."]

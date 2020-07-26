@@ -3,6 +3,6 @@
 [ext_resource path="res://fonts/m5x7.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 32
+size = 64
 outline_color = Color( 0.168627, 0.952941, 0.121569, 1 )
 font_data = ExtResource( 1 )

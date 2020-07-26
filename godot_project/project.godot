@@ -307,8 +307,8 @@ SlowTimeEffect="*res://effects/slow_time/slow_time.tscn"
 
 [display]
 
-window/size/width=256
-window/size/height=342
+window/size/width=512
+window/size/height=684
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

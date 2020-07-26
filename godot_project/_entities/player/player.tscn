@@ -84,7 +84,7 @@ animations = [ {
 colors = PoolColorArray( 0, 0, 0, 0, 0.666667, 0.0117647, 0.0117647, 1 )
 
 [sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 14.5633, 4.27822 )
+extents = Vector2( 29.4829, 7.16121 )
 
 [sub_resource type="Animation" id=17]
 length = 0.2
@@ -137,15 +137,16 @@ tracks/0/keys = {
 [node name="player" type="KinematicBody2D"]
 collision_mask = 30
 script = ExtResource( 1 )
-jump_speed = 250
-vertical_speed = 130
-fall_speed = 150
+jump_speed = 450
+vertical_speed = 320
+fall_speed = 320
+starting_jump_count = 4
+max_jump_count = 4
 jump_slow_motion_duration = 0.15
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.407255, 9.53674e-06 )
 rotation = -1.5708
-scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 14 )
 animation = "idle"
 frame = 1
@@ -160,6 +161,7 @@ copy_period = 0.1
 gradient = SubResource( 15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.0562, 0 )
 shape = SubResource( 16 )
 
 [node name="Label" type="Label" parent="."]

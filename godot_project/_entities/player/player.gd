@@ -12,8 +12,8 @@ export(int) var vertical_speed = 500
 export(int) var fall_speed = 10
 export(int) var starting_jump_count = 3
 export(int) var max_jump_count = 2
-export(float) var jump_slow_motion_duration = 0.1
-export(float) var jump_slow_motion_strength = 0.5
+export(float) var jump_slow_motion_duration = 0.05
+export(float) var jump_slow_motion_strength = -0.05
 export(float) var time_combo = 1
 const jump_explosion_scene = preload("res://effects/jump_explosion/jump_explosion.tscn")
 const landing_effect = preload("res://effects/landing_effect/landing_effect.tscn")
@@ -120,7 +120,7 @@ func stop_combo():
 func _jump() -> void:
 	if _jump_count > 0:
 		_direction = -_direction
-#		_jump_count -= 1 NO REALLY YOU SHOULD NOPT
+		_jump_count -= 1 #NO REALLY YOU SHOULD NOPT
 		
 		$Sprite.speed_scale = 1
 		$Sprite.play("fly")
@@ -135,7 +135,8 @@ func _jump() -> void:
 		jump_explosion_instance.position = position
 		
 		if not _is_jumping:
-			SlowTimeEffect.start(jump_slow_motion_duration, jump_slow_motion_strength)
+			pass
+#			SlowTimeEffect.start(jump_slow_motion_duration, jump_slow_motion_strength)
 		_is_jumping = true
 	else:
 		var jump_explosion_instance = jump_explosion_scene.instance()

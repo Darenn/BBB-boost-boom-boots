@@ -3,23 +3,23 @@
 [ext_resource path="res://tilesets/entities_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://_entities/player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://_entities/camera/camera.tscn" type="PackedScene" id=3]
-[ext_resource path="res://_entities/bkill/bkill.tscn" type="PackedScene" id=4]
 [ext_resource path="res://_entities/jump_pickup/jump_pickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/main.gd" type="Script" id=6]
 [ext_resource path="res://fonts/test_fon_hudt.tres" type="DynamicFont" id=7]
 [ext_resource path="res://gui/hud/score_gui.gd" type="Script" id=8]
 [ext_resource path="res://camera/screen_shake/ScreenShake.tscn" type="PackedScene" id=9]
-[ext_resource path="res://_entities/destructible/destructible.tscn" type="PackedScene" id=10]
 [ext_resource path="res://addons/tile_spawner/tile_spawner.gd" type="Script" id=11]
 [ext_resource path="res://effects/background/background.tscn" type="PackedScene" id=12]
 [ext_resource path="res://_entities/player/remover_pl.png" type="Texture" id=13]
 [ext_resource path="res://tilesets/background.png" type="Texture" id=15]
+[ext_resource path="res://_entities/bkill/bkill.tscn" type="PackedScene" id=16]
 [ext_resource path="res://_entities/destructible/destructible_right.tscn" type="PackedScene" id=17]
 [ext_resource path="res://effects/background/building_back_4.tscn" type="PackedScene" id=18]
 [ext_resource path="res://effects/background/building_back_2.tscn" type="PackedScene" id=19]
 [ext_resource path="res://effects/background/building_back.tscn" type="PackedScene" id=20]
 [ext_resource path="res://effects/background/building_back_3.tscn" type="PackedScene" id=21]
 [ext_resource path="res://_entities/bkill/bkill_right.tscn" type="PackedScene" id=22]
+[ext_resource path="res://_entities/destructible/destructible.tscn" type="PackedScene" id=23]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -331,7 +331,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 17/shapes = [  ]
 17/z_index = 0
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 resource_name = "bounce"
 length = 0.4
 tracks/0/type = "value"
@@ -354,7 +354,8 @@ script = ExtResource( 6 )
 environment = SubResource( 1 )
 
 [node name="walls" type="TileMap" parent="."]
-modulate = Color( 0.529412, 0.529412, 0.529412, 1 )
+modulate = Color( 0.384314, 0.384314, 0.384314, 1 )
+scale = Vector2( 2, 2 )
 tile_set = SubResource( 15 )
 cell_size = Vector2( 32, 32 )
 format = 1
@@ -374,228 +375,473 @@ position = Vector2( -156, 0 )
 script = ExtResource( 11 )
 source_tilemap = NodePath("../entities_tilemap")
 mapping = "res://tilesets/json/entities_tileset.json"
+clear_children_before_baking = false
 
 [node name="bkill_right" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 76, -3888 )
+position = Vector2( -4, -7776 )
 
 [node name="bkill_right2" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -3888 )
+position = Vector2( 60, -7776 )
 
 [node name="bkill_right3" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 140, -3888 )
+position = Vector2( 124, -7776 )
 
-[node name="bkill" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 172, -3888 )
+[node name="bkill" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -7776 )
 
-[node name="bkill2" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -3888 )
+[node name="bkill2" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -7776 )
 
-[node name="bkill3" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 236, -3888 )
+[node name="bkill3" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 316, -7776 )
 
 [node name="bkill_right4" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 76, -3632 )
+position = Vector2( -4, -7264 )
 
 [node name="bkill_right5" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -3632 )
+position = Vector2( 60, -7264 )
 
-[node name="bkill4" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 236, -3632 )
+[node name="bkill4" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 316, -7264 )
 
 [node name="bkill_right6" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 76, -3088 )
+position = Vector2( -4, -6176 )
 
 [node name="bkill_right7" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -3088 )
+position = Vector2( 60, -6176 )
 
-[node name="bkill5" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -2928 )
+[node name="bkill5" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -5856 )
 
-[node name="bkill6" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 236, -2928 )
+[node name="bkill6" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 316, -5856 )
 
 [node name="bkill_right8" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 76, -2736 )
+position = Vector2( -4, -5472 )
 
 [node name="destrutible_right" parent="tile_spawner" instance=ExtResource( 17 )]
-position = Vector2( 236, -2608 )
+position = Vector2( 316, -5216 )
 
-[node name="bkill7" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 172, -2512 )
+[node name="bkill7" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -5024 )
 
 [node name="bkill_right9" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 76, -2448 )
+position = Vector2( -4, -4896 )
 
-[node name="destrutible" parent="tile_spawner" instance=ExtResource( 10 )]
-position = Vector2( 76, -2384 )
+[node name="destrutible" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( -4, -4768 )
 
-[node name="bkill8" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 172, -2352 )
+[node name="bkill8" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -4704 )
 
 [node name="destrutible_right2" parent="tile_spawner" instance=ExtResource( 17 )]
-position = Vector2( 172, -2288 )
+position = Vector2( 188, -4576 )
 
 [node name="bkill_right10" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 76, -2256 )
+position = Vector2( -4, -4512 )
 
-[node name="bkill9" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 172, -2160 )
+[node name="bkill9" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -4320 )
 
 [node name="bkill_right11" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -2032 )
+position = Vector2( 60, -4064 )
 
 [node name="destrutible_right3" parent="tile_spawner" instance=ExtResource( 17 )]
-position = Vector2( 172, -2000 )
+position = Vector2( 188, -4000 )
 
 [node name="bkill_right12" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -1936 )
+position = Vector2( 60, -3872 )
 
-[node name="bkill10" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 172, -1904 )
+[node name="bkill10" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -3808 )
 
-[node name="destrutible2" parent="tile_spawner" instance=ExtResource( 10 )]
-position = Vector2( 108, -1872 )
+[node name="destrutible2" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -3744 )
 
-[node name="bkill11" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 172, -1808 )
+[node name="bkill11" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -3616 )
 
 [node name="bkill_right13" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -1744 )
+position = Vector2( 60, -3488 )
 
 [node name="destrutible_right4" parent="tile_spawner" instance=ExtResource( 17 )]
-position = Vector2( 172, -1744 )
+position = Vector2( 188, -3488 )
 
-[node name="destrutible3" parent="tile_spawner" instance=ExtResource( 10 )]
-position = Vector2( 108, -1680 )
+[node name="destrutible3" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -3360 )
 
-[node name="bkill12" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 172, -1584 )
+[node name="bkill12" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -3168 )
 
 [node name="bkill_right14" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -1520 )
+position = Vector2( 60, -3040 )
 
-[node name="destrutible4" parent="tile_spawner" instance=ExtResource( 10 )]
-position = Vector2( 108, -1456 )
+[node name="destrutible4" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -2912 )
 
-[node name="bkill13" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -1392 )
+[node name="bkill13" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -2784 )
 
-[node name="bkill14" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -1360 )
+[node name="bkill14" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -2720 )
 
 [node name="destrutible_right5" parent="tile_spawner" instance=ExtResource( 17 )]
-position = Vector2( 204, -1296 )
+position = Vector2( 252, -2592 )
 
 [node name="bkill_right15" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -1200 )
+position = Vector2( 60, -2400 )
 
 [node name="bkill_right16" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -1168 )
+position = Vector2( 60, -2336 )
 
 [node name="bkill_right17" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -1136 )
+position = Vector2( 60, -2272 )
 
-[node name="bkill15" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -1136 )
+[node name="bkill15" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -2272 )
 
 [node name="destrutible_right6" parent="tile_spawner" instance=ExtResource( 17 )]
-position = Vector2( 204, -1072 )
+position = Vector2( 252, -2144 )
 
 [node name="bkill_right18" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -976 )
+position = Vector2( 60, -1952 )
 
 [node name="bkill_right19" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -944 )
+position = Vector2( 60, -1888 )
 
-[node name="bkill16" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -912 )
+[node name="bkill16" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -1824 )
 
 [node name="bkill_right20" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -784 )
+position = Vector2( 60, -1568 )
 
-[node name="bkill17" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -720 )
+[node name="bkill17" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -1440 )
 
 [node name="bkill_right21" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -656 )
+position = Vector2( 60, -1312 )
 
-[node name="destrutible5" parent="tile_spawner" instance=ExtResource( 10 )]
-position = Vector2( 108, -592 )
+[node name="destrutible5" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -1184 )
 
-[node name="bkill18" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -592 )
+[node name="bkill18" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -1184 )
 
 [node name="bkill_right22" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -528 )
+position = Vector2( 60, -1056 )
 
-[node name="bkill19" parent="tile_spawner" instance=ExtResource( 4 )]
-position = Vector2( 204, -368 )
+[node name="bkill19" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -736 )
 
 [node name="bkill_right23" parent="tile_spawner" instance=ExtResource( 22 )]
-position = Vector2( 108, -208 )
+position = Vector2( 60, -416 )
 
-[node name="destrutible6" parent="tile_spawner" instance=ExtResource( 10 )]
-position = Vector2( 108, -144 )
+[node name="destrutible6" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -288 )
 
 [node name="destrutible_right7" parent="tile_spawner" instance=ExtResource( 17 )]
-position = Vector2( 204, 80 )
+position = Vector2( 252, 160 )
+
+[node name="bkill_right24" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( -4, -7776 )
+
+[node name="bkill_right25" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -7776 )
+
+[node name="bkill_right26" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 124, -7776 )
+
+[node name="bkill20" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -7776 )
+
+[node name="bkill21" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -7776 )
+
+[node name="bkill22" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 316, -7776 )
+
+[node name="bkill_right27" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( -4, -7264 )
+
+[node name="bkill_right28" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -7264 )
+
+[node name="bkill23" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 316, -7264 )
+
+[node name="bkill_right29" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( -4, -6176 )
+
+[node name="bkill_right30" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -6176 )
+
+[node name="bkill24" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -5856 )
+
+[node name="bkill25" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 316, -5856 )
+
+[node name="bkill_right31" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( -4, -5472 )
+
+[node name="destrutible_right8" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 316, -5216 )
+
+[node name="bkill26" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -5024 )
+
+[node name="bkill_right32" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( -4, -4896 )
+
+[node name="destrutible7" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( -4, -4768 )
+
+[node name="bkill27" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -4704 )
+
+[node name="destrutible_right9" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 188, -4576 )
+
+[node name="bkill_right33" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( -4, -4512 )
+
+[node name="bkill28" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -4320 )
+
+[node name="bkill_right34" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -4064 )
+
+[node name="destrutible_right10" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 188, -4000 )
+
+[node name="bkill_right35" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -3872 )
+
+[node name="bkill29" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -3808 )
+
+[node name="destrutible8" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -3744 )
+
+[node name="bkill30" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -3616 )
+
+[node name="bkill_right36" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -3488 )
+
+[node name="destrutible_right11" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 188, -3488 )
+
+[node name="destrutible9" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -3360 )
+
+[node name="bkill31" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 188, -3168 )
+
+[node name="bkill_right37" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -3040 )
+
+[node name="destrutible10" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -2912 )
+
+[node name="bkill32" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -2784 )
+
+[node name="bkill33" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -2720 )
+
+[node name="destrutible_right12" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 252, -2592 )
+
+[node name="bkill_right38" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -2400 )
+
+[node name="bkill_right39" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -2336 )
+
+[node name="bkill_right40" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -2272 )
+
+[node name="bkill34" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -2272 )
+
+[node name="destrutible_right13" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 252, -2144 )
+
+[node name="bkill_right41" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -1952 )
+
+[node name="bkill_right42" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -1888 )
+
+[node name="bkill35" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -1824 )
+
+[node name="bkill_right43" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -1568 )
+
+[node name="bkill36" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -1440 )
+
+[node name="bkill_right44" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -1312 )
+
+[node name="destrutible11" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -1184 )
+
+[node name="bkill37" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -1184 )
+
+[node name="bkill_right45" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -1056 )
+
+[node name="bkill38" parent="tile_spawner" instance=ExtResource( 16 )]
+position = Vector2( 252, -736 )
+
+[node name="bkill_right46" parent="tile_spawner" instance=ExtResource( 22 )]
+position = Vector2( 60, -416 )
+
+[node name="destrutible12" parent="tile_spawner" instance=ExtResource( 23 )]
+position = Vector2( 60, -288 )
+
+[node name="destrutible_right14" parent="tile_spawner" instance=ExtResource( 17 )]
+position = Vector2( 252, 160 )
 
 [node name="tile_spawner_pickup" type="Node2D" parent="."]
 position = Vector2( -156, 0 )
 script = ExtResource( 11 )
 source_tilemap = NodePath("../pickup_tilemap")
 mapping = "res://tilesets/json/entities_tileset.json"
-target_node = null
+clear_children_before_baking = false
 
 [node name="jump_pickup" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 172, -3632 )
+position = Vector2( 188, -7264 )
 
 [node name="jump_pickup2" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 108, -3312 )
+position = Vector2( 60, -6624 )
 
 [node name="jump_pickup3" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 172, -3088 )
+position = Vector2( 188, -6176 )
 
 [node name="jump_pickup4" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 108, -2928 )
+position = Vector2( 60, -5856 )
 
 [node name="jump_pickup5" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 172, -2736 )
+position = Vector2( 188, -5472 )
 
 [node name="jump_pickup6" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 76, -2544 )
+position = Vector2( -4, -5088 )
 
 [node name="jump_pickup7" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 76, -2096 )
+position = Vector2( -4, -4192 )
 
 [node name="jump_pickup8" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 172, -1520 )
+position = Vector2( 188, -3040 )
 
 [node name="jump_pickup9" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 204, -1168 )
+position = Vector2( 252, -2336 )
 
 [node name="jump_pickup10" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 204, -976 )
+position = Vector2( 252, -1952 )
 
 [node name="jump_pickup11" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 108, -880 )
+position = Vector2( 60, -1760 )
 
 [node name="jump_pickup12" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 172, -784 )
+position = Vector2( 188, -1568 )
 
 [node name="jump_pickup13" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 172, -656 )
+position = Vector2( 188, -1312 )
 
 [node name="jump_pickup14" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 108, -432 )
+position = Vector2( 60, -864 )
 
 [node name="jump_pickup15" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 204, -272 )
+position = Vector2( 252, -544 )
 
 [node name="jump_pickup16" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
-position = Vector2( 108, -16 )
+position = Vector2( 124, -160 )
+
+[node name="jump_pickup17" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -160 )
+
+[node name="jump_pickup18" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 124, -96 )
+
+[node name="jump_pickup19" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -96 )
+
+[node name="jump_pickup20" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 124, -32 )
+
+[node name="jump_pickup21" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -32 )
+
+[node name="jump_pickup22" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -7264 )
+
+[node name="jump_pickup23" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 60, -6624 )
+
+[node name="jump_pickup24" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -6176 )
+
+[node name="jump_pickup25" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 60, -5856 )
+
+[node name="jump_pickup26" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -5472 )
+
+[node name="jump_pickup27" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( -4, -5088 )
+
+[node name="jump_pickup28" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( -4, -4192 )
+
+[node name="jump_pickup29" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -3040 )
+
+[node name="jump_pickup30" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 252, -2336 )
+
+[node name="jump_pickup31" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 252, -1952 )
+
+[node name="jump_pickup32" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 60, -1760 )
+
+[node name="jump_pickup33" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -1568 )
+
+[node name="jump_pickup34" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -1312 )
+
+[node name="jump_pickup35" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 60, -864 )
+
+[node name="jump_pickup36" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 252, -544 )
+
+[node name="jump_pickup37" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 124, -160 )
+
+[node name="jump_pickup38" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -160 )
+
+[node name="jump_pickup39" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 124, -96 )
+
+[node name="jump_pickup40" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -96 )
+
+[node name="jump_pickup41" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 124, -32 )
+
+[node name="jump_pickup42" parent="tile_spawner_pickup" instance=ExtResource( 5 )]
+position = Vector2( 188, -32 )
 
 [node name="entities_tilemap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
@@ -603,10 +849,11 @@ format = 1
 tile_data = PoolIntArray( -7929859, 6, 0, -7929858, 6, 0, -7929857, 6, 0, -7995392, 5, 0, -7995391, 5, 0, -7995390, 5, 0, -7405571, 6, 0, -7405570, 6, 0, -7471102, 5, 0, -6291459, 6, 0, -6291458, 6, 0, -6029311, 5, 0, -6029310, 5, 0, -5570563, 6, 0, -5373950, 3, 0, -5177344, 5, 0, -4980739, 6, 0, -4849667, 4, 0, -4849664, 5, 0, -4718592, 3, 0, -4587523, 6, 0, -4456448, 5, 0, -4128770, 6, 0, -4128768, 3, 0, -3932162, 6, 0, -3932160, 5, 0, -3801090, 4, 0, -3735552, 5, 0, -3538946, 6, 0, -3604480, 3, 0, -3407874, 4, 0, -3276800, 5, 0, -3080194, 6, 0, -2949122, 4, 0, -2883583, 5, 0, -2818047, 5, 0, -2686975, 3, 0, -2424834, 6, 0, -2359298, 6, 0, -2293762, 6, 0, -2359295, 5, 0, -2228223, 3, 0, -1966082, 6, 0, -1900546, 6, 0, -1900543, 5, 0, -1572866, 6, 0, -1507327, 5, 0, -1310722, 6, 0, -1179650, 4, 0, -1245183, 5, 0, -1048578, 6, 0, -786431, 5, 0, -393218, 6, 0, -262146, 4, 0, 131073, 3, 0 )
 
 [node name="pickup_tilemap" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -7471104, 0, 0, -6750210, 0, 0, -6356992, 0, 0, -5963778, 0, 0, -5636096, 0, 0, -5177347, 0, 0, -4259843, 0, 0, -3145728, 0, 0, -2424831, 0, 0, -2031615, 0, 0, -1769474, 0, 0, -1638400, 0, 0, -1376256, 0, 0, -851970, 0, 0, -589823, 0, 0, -2, 0, 0 )
+tile_data = PoolIntArray( -7471104, 0, 0, -6750210, 0, 0, -6356992, 0, 0, -5963778, 0, 0, -5636096, 0, 0, -5177347, 0, 0, -4259843, 0, 0, -3145728, 0, 0, -2424831, 0, 0, -2031615, 0, 0, -1769474, 0, 0, -1638400, 0, 0, -1376256, 0, 0, -851970, 0, 0, -589823, 0, 0, -131073, 0, 0, -196608, 0, 0, -65537, 0, 0, -131072, 0, 0, -1, 0, 0, -65536, 0, 0 )
 
 [node name="camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 15 )
@@ -614,20 +861,19 @@ vertical_speed = 190
 fall_speed = 100
 
 [node name="UI_back" type="Sprite" parent="camera"]
-modulate = Color( 0.211765, 0.184314, 0.180392, 0.733333 )
+modulate = Color( 0.25098, 0.611765, 0, 1 )
 show_behind_parent = true
-position = Vector2( -5.27252, 162.289 )
-scale = Vector2( 8.4134, 0.491103 )
+position = Vector2( 0.142467, 307.14 )
+scale = Vector2( 16.0282, 0.726128 )
 texture = ExtResource( 13 )
 
 [node name="score" type="Label" parent="camera"]
-modulate = Color( 0.12549, 1, 0.0509804, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -123.887
-margin_top = 137.861
-margin_right = -15.8869
-margin_bottom = 202.861
+margin_left = -245.163
+margin_top = 275.857
+margin_right = -61.1628
+margin_bottom = 380.857
 custom_fonts/font = ExtResource( 7 )
 text = "score : 0
 "
@@ -637,11 +883,9 @@ __meta__ = {
 }
 
 [node name="combo" type="Label" parent="camera/score"]
-modulate = Color( 0.223529, 0.898039, 0.0823529, 1 )
-margin_left = 218.887
-margin_top = 1.13855
-margin_right = 258.887
-margin_bottom = 27.1385
+margin_left = 442.738
+margin_right = 490.738
+margin_bottom = 51.0
 custom_fonts/font = ExtResource( 7 )
 text = "x1"
 __meta__ = {
@@ -649,7 +893,7 @@ __meta__ = {
 }
 
 [node name="animation_player" type="AnimationPlayer" parent="camera/score"]
-anims/bounce = SubResource( 17 )
+anims/bounce = SubResource( 16 )
 
 [node name="screen_shake" parent="camera" instance=ExtResource( 9 )]
 
@@ -793,8 +1037,7 @@ position = Vector2( -53.9853, 73.1772 )
 scale = Vector2( 2, 2 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 49.5722, 105.086 )
-vertical_speed = 190
+position = Vector2( 96.5722, 105.086 )
 [connection signal="died" from="player" to="camera" method="_on_player_died"]
 [connection signal="landed" from="player" to="camera" method="shake"]
 [connection signal="scored" from="player" to="camera/score" method="_on_player_scored"]

@@ -24,6 +24,7 @@ tracks/0/keys = {
 
 [node name="destrutible" type="Area2D"]
 modulate = Color( 0.702155, 0.757154, 0.702155, 1 )
+scale = Vector2( 2, 2 )
 collision_layer = 16
 script = ExtResource( 2 )
 score_reward = 20
