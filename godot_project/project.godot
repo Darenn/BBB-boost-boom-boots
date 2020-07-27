@@ -306,10 +306,10 @@ default_bus_layout="res://audio/bus/music.tres"
 
 [autoload]
 
-SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 SlowTimeEffect="*res://effects/slow_time/slow_time.tscn"
 NameEntry="*res://autoload/name_entry.gd"
 MusicPlayer="*res://audio/music_player.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 [display]
 
