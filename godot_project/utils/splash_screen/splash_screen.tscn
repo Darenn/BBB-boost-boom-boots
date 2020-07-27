@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://utils/splash_screen/splash_screen.gd" type="Script" id=1]
-[ext_resource path="res://utils/splash_screen/scorespacejam_sprite_sheet.png" type="Texture" id=2]
+[ext_resource path="res://fonts/m5x7.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://utils/splash_screen/Godot_logo.svg" type="Texture" id=3]
 [ext_resource path="res://utils/splash_screen/logo_darenn_good.png" type="Texture" id=4]
 [ext_resource path="res://utils/splash_screen/splash_screen_item.gd" type="Script" id=5]
 [ext_resource path="res://levels/main.tscn" type="PackedScene" id=6]
+[ext_resource path="res://utils/splash_screen/sw-logo-red.png" type="Texture" id=7]
+[ext_resource path="res://utils/splash_screen/scorespacejam_sprite_sheet.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -56,32 +58,32 @@ tracks/0/keys = {
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 399, 224 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 8 )
 region = Rect2( 399, 0, 399, 224 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 8 )
 region = Rect2( 798, 0, 399, 224 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 8 )
 region = Rect2( 1197, 0, 399, 224 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 8 )
 region = Rect2( 1596, 0, 399, 224 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
-atlas = ExtResource( 2 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 224, 399, 224 )
 
 [sub_resource type="SpriteFrames" id=11]
@@ -93,6 +95,33 @@ animations = [ {
 } ]
 
 [sub_resource type="Animation" id=12]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=14]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=15]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:modulate")
@@ -121,7 +150,7 @@ script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="DarennKellerSplashScreen"]
 modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 1.00595, 1.00595 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 playing = true
 
@@ -152,3 +181,27 @@ playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreSpaceSplashScreen"]
 anims/splash = SubResource( 12 )
+
+[node name="WolfSplashScreen2" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="WolfSplashScreen2"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1.00595, 1.00595 )
+frames = SubResource( 13 )
+playing = true
+
+[node name="label" type="Label" parent="WolfSplashScreen2/AnimatedSprite"]
+margin_left = -247.0
+margin_top = 165.0
+margin_right = 267.0
+margin_bottom = 203.0
+custom_fonts/font = SubResource( 14 )
+text = "Leaderboard hosted freely by Silent Wolf."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WolfSplashScreen2"]
+anims/splash = SubResource( 15 )

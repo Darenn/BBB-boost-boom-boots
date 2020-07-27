@@ -296,8 +296,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="space_score_jam_9"
+config/name="BBB: Boost Boom Boots"
+config/description="BBB: Boost Boom Boots is our submission to the Space Score Jam #9.
+It's a Retro Climber Runner, where you jump between buildings using you BBB destroying advertising and stealing private data in the process."
 run/main_scene="res://utils/splash_screen/splash_screen.tscn"
+run/disable_stdout=true
+run/disable_stderr=true
 config/icon="res://camera/box_cam_2D/icon.png"
 
 [audio]
@@ -315,6 +319,10 @@ SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 window/size/width=512
 window/size/height=684
+window/size/borderless=true
+window/size/fullscreen=true
+window/handheld/orientation="portrait"
+mouse_cursor/custom_image="res://_entities/jump_pickup/monster.png"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -343,10 +351,6 @@ restart={
 2d_physics/layer_3="killers"
 2d_physics/layer_4="pickups"
 2d_physics/layer_5="ads"
-
-[logging]
-
-file_logging/enable_file_logging=true
 
 [node]
 

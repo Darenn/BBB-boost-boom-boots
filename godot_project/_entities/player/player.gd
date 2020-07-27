@@ -224,5 +224,5 @@ func on_end() -> void:
 	$Sprite.play("falling")
 	yield($tween_end, "tween_completed")
 	$Sprite.flip_h = true
-	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, -1000, 10)
+	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, -1000, 10,  Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	emit_signal("end")

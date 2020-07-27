@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://tilesets/entities_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://_entities/player/player.tscn" type="PackedScene" id=2]
@@ -10,7 +10,9 @@
 [ext_resource path="res://gui/hud/leaderboardbig.png" type="Texture" id=8]
 [ext_resource path="res://camera/screen_shake/ScreenShake.tscn" type="PackedScene" id=9]
 [ext_resource path="res://fonts/m5x7.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://_entities/player/remover_pl.png" type="Texture" id=11]
 [ext_resource path="res://effects/background/skybox.png" type="Texture" id=12]
+[ext_resource path="res://shaders/crt_shader/CRTShader.shader" type="Shader" id=13]
 [ext_resource path="res://gui/hud/score_label.gd" type="Script" id=14]
 [ext_resource path="res://textures/background.png" type="Texture" id=15]
 [ext_resource path="res://_entities/destructible/destructible.tscn" type="PackedScene" id=16]
@@ -25,10 +27,10 @@
 [ext_resource path="res://_entities/boost/boost.tscn" type="PackedScene" id=27]
 [ext_resource path="res://_entities/bkill/bkill_right.tscn" type="PackedScene" id=28]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 10 )
 
 [sub_resource type="Environment" id=3]
@@ -39,9 +41,9 @@ dof_blur_far_amount = 0.14
 dof_blur_far_quality = 2
 dof_blur_near_distance = 1.04
 glow_enabled = true
-glow_intensity = 0.47
-glow_strength = 1.04
-glow_bloom = 0.43
+glow_intensity = 0.3
+glow_strength = 1.02
+glow_bloom = 0.35
 glow_blend_mode = 0
 glow_hdr_threshold = 0.68
 adjustment_brightness = 2.19
@@ -365,6 +367,19 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 18/shapes = [  ]
 18/z_index = 0
 
+[sub_resource type="ShaderMaterial" id=18]
+shader = ExtResource( 13 )
+shader_param/screen_width = 512.0
+shader_param/screen_height = 684.0
+shader_param/BarrelPower = 1.1
+shader_param/color_bleeding = 1.1
+shader_param/bleeding_range_x = 1.3
+shader_param/bleeding_range_y = 1.3
+shader_param/lines_distance = 4.0
+shader_param/scan_size = 2.0
+shader_param/scanline_alpha = 0.9
+shader_param/lines_velocity = 1000.0
+
 [node name="main" type="Node2D"]
 script = ExtResource( 6 )
 
@@ -373,28 +388,29 @@ position = Vector2( 0, -70 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="label" type="Label" parent="leaderboard"]
+[node name="label2" type="Label" parent="leaderboard"]
 margin_left = -43.0
-margin_top = -114.0
+margin_top = -119.0
+margin_right = 55.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 2 )
+text = "TOP 10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="leaderboard"]
+margin_left = -40.0
+margin_top = -97.0
 margin_right = 53.0
-margin_bottom = 110.0
+margin_bottom = 108.0
 custom_fonts/font = SubResource( 1 )
 text = "
 
 
      LOADING"
 script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="label2" type="Label" parent="leaderboard/label"]
-margin_top = -5.0
-margin_right = 98.0
-margin_bottom = 112.0
-custom_fonts/font = SubResource( 2 )
-text = "TOP 10"
-align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1452,6 +1468,15 @@ __meta__ = {
 }
 
 [node name="GUI" parent="." instance=ExtResource( 7 )]
+
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="sprite" type="Sprite" parent="canvas_layer"]
+material = SubResource( 18 )
+position = Vector2( 260, 344 )
+scale = Vector2( 16.25, 7.5 )
+texture = ExtResource( 11 )
 [connection signal="died" from="player" to="camera" method="_on_player_died"]
 [connection signal="end" from="player" to="camera" method="_on_player_end"]
 [connection signal="landed" from="player" to="camera" method="shake"]

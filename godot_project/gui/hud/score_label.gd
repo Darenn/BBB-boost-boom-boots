@@ -8,7 +8,7 @@ extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "\n\n"
+	text = ""
 	yield(SilentWolf.Scores.get_high_scores(0), "sw_scores_received")
 	var count = 0
 	var already_scored = []
@@ -29,7 +29,7 @@ func _on_end_trigger_body_entered(body: Node) -> void:
 	pass
 
 func _on_end_trigger_new_score() -> void:
-	text = "\n\n"
+	text = ""
 	yield(SilentWolf.Scores.get_high_scores(0), "sw_scores_received")
 	var count = 0
 	var already_scored = []

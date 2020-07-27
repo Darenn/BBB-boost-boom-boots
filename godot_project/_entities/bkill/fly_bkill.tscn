@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://_entities/bkill/bkill.tscn" type="PackedScene" id=1]
 [ext_resource path="res://_entities/bkill/fly_drone.png" type="Texture" id=2]
+[ext_resource path="res://_entities/bkill/rotating.gd" type="Script" id=3]
 
 [node name="fly_bkill" instance=ExtResource( 1 )]
 
@@ -11,6 +12,7 @@ texture = ExtResource( 2 )
 vframes = 1
 hframes = 1
 frame = 0
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2( -0.0691261, -0.102927 )
