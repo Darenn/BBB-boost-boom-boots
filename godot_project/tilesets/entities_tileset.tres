@@ -3,7 +3,6 @@
 [ext_resource path="res://_entities/jump_pickup/items.png" type="Texture" id=1]
 [ext_resource path="res://textures/background.png" type="Texture" id=2]
 
-
 [resource]
 0/name = "jump_pickup"
 0/texture = ExtResource( 1 )

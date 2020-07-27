@@ -181,7 +181,7 @@ tracks/0/keys = {
 [node name="player" type="KinematicBody2D"]
 collision_mask = 30
 script = ExtResource( 1 )
-jump_speed = 450
+jump_speed = 400
 vertical_speed = 320
 fall_speed = 320
 starting_jump_count = 4
@@ -192,7 +192,7 @@ jump_slow_motion_duration = 0.15
 position = Vector2( -0.407255, 9.53674e-06 )
 rotation = -1.5708
 frames = SubResource( 21 )
-animation = "falling"
+animation = "idle"
 
 [node name="node_2d" type="Node2D" parent="Sprite"]
 show_behind_parent = true

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/16ShipCollectionPRE2.png-9d20db90471016befaf661da00b3c337.stex"
+path="res://.import/leaderboard.png-5e317471cbba99ad45fb724751e0bb89.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/16ShipCollectionPRE2.png"
-dest_files=[ "res://.import/16ShipCollectionPRE2.png-9d20db90471016befaf661da00b3c337.stex" ]
+source_file="res://gui/leaderboard.png"
+dest_files=[ "res://.import/leaderboard.png-5e317471cbba99ad45fb724751e0bb89.stex" ]
 
 [params]
 

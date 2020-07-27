@@ -8,7 +8,7 @@ extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "TOP 10\n"
+	text = "\n\n"
 	yield(SilentWolf.Scores.get_high_scores(), "sw_scores_received")
 	for score in SilentWolf.Scores.scores:
 		text+= "%s %s\n" % [score.player_name, score.score]

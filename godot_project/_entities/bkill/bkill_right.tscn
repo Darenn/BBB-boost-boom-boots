@@ -4,8 +4,8 @@
 
 [node name="bkill_right" instance=ExtResource( 1 )]
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( -7.41244, 6.81553 )
-
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="0"]
 frame = 31
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -7.73372, 6.75127 )

@@ -3,28 +3,27 @@
 [ext_resource path="res://textures/background.png" type="Texture" id=1]
 [ext_resource path="res://_entities/bkill/bkill.gd" type="Script" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.52433, 7.69162 )
+extents = Vector2( 8.59276, 7.91869 )
 
 [node name="bkill" type="Area2D" groups=[
 "killers",
 ]]
-modulate = Color( 1.11373, 0.0392157, 0.0392157, 1 )
 scale = Vector2( 2, 2 )
 collision_layer = 4
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
-"killers",
-]]
-position = Vector2( 7.75198, 6.42999 )
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="." groups=[
 "killers",
 ]]
+modulate = Color( 1, 0.552941, 0.552941, 1 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 8
 frame = 27
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"killers",
+]]
+position = Vector2( 8.06754, 6.3511 )
+shape = SubResource( 1 )

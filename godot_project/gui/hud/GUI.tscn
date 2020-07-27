@@ -1,0 +1,261 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://fonts/m5x7.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://effects/jump_explosion/explo-1frame.png" type="Texture" id=2]
+[ext_resource path="res://gui/hud/name_edit.gd" type="Script" id=3]
+[ext_resource path="res://gui/hud/score_gui.gd" type="Script" id=4]
+[ext_resource path="res://_entities/jump_pickup/floppy.png" type="Texture" id=5]
+[ext_resource path="res://gui/hud/logonews.png" type="Texture" id=6]
+[ext_resource path="res://_entities/player/remover_pl.png" type="Texture" id=7]
+[ext_resource path="res://gui/hud/scrolling_news.gd" type="Script" id=8]
+[ext_resource path="res://_entities/destructible/ad_neon.png" type="Texture" id=9]
+[ext_resource path="res://_entities/player/head.png" type="Texture" id=10]
+[ext_resource path="res://_entities/jump_pickup/star.png" type="Texture" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+outline_color = Color( 1, 0, 0.890196, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+outline_color = Color( 0, 1, 0.141176, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 60
+outline_color = Color( 0.729412, 0.298039, 0.298039, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 90
+font_data = ExtResource( 1 )
+
+[node name="GUI" type="CanvasLayer"]
+layer = 4
+script = ExtResource( 4 )
+
+[node name="news" type="NinePatchRect" parent="."]
+margin_left = -3.0
+margin_top = 622.0
+margin_right = 509.0
+margin_bottom = 669.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect2" type="TextureRect" parent="news"]
+margin_left = 229.428
+margin_top = 29.7209
+margin_right = 245.428
+margin_bottom = 45.7209
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect3" type="TextureRect" parent="news"]
+margin_left = 65.4281
+margin_top = 12.7209
+margin_right = 90.4281
+margin_bottom = 44.7209
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="Label" parent="news"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 63.0
+margin_top = -1.0
+margin_right = 316.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+text = "Dangerous punk pressing SPACE BAR to destroy the advertising signs and stealing citizen's private data."
+align = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="live" type="NinePatchRect" parent="."]
+self_modulate = Color( 1, 0.0117647, 0.0117647, 1 )
+margin_left = -2.0
+margin_top = 622.0
+margin_right = 54.0
+margin_bottom = 668.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="live" type="Label" parent="live"]
+margin_left = 1.0
+margin_right = 55.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 2 )
+text = "LIVE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="big_news" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.164706, 0.164706, 0.160784, 1 )
+margin_left = 315.0
+margin_top = 589.0
+margin_right = 526.0
+margin_bottom = 673.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="big_news"]
+self_modulate = Color( 0.894118, 0.247059, 0.968627, 1 )
+margin_left = 4.0
+margin_top = -3.0
+margin_right = 196.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 3 )
+text = "NEO BORDO NEWS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="big_news"]
+margin_left = 22.0
+margin_top = 25.0
+margin_right = 125.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 4 )
+text = "suspect: darenn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="big_news"]
+margin_left = 22.0
+margin_top = 41.0
+margin_right = 192.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "damages: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="combo" type="Label" parent="big_news"]
+margin_left = 22.0
+margin_top = 57.0
+margin_right = 194.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 4 )
+text = "popularity x1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect" type="TextureRect" parent="big_news"]
+margin_left = 143.281
+margin_top = 31.6498
+margin_right = 161.281
+margin_bottom = 50.6498
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect2" type="TextureRect" parent="big_news"]
+margin_left = 3.71686
+margin_top = 57.5204
+margin_right = 19.7169
+margin_bottom = 73.5204
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect3" type="TextureRect" parent="big_news"]
+margin_left = 3.47903
+margin_top = 41.1104
+margin_right = 35.479
+margin_bottom = 73.1104
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="texture_rect4" type="TextureRect" parent="big_news"]
+margin_left = 5.22815
+margin_top = 25.3315
+margin_right = 37.2281
+margin_bottom = 57.3315
+rect_min_size = Vector2( 0.75, 1 )
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scrolling_news" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
+margin_left = -8.0
+margin_top = 668.0
+margin_right = 525.0
+margin_bottom = 688.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="scrolling_news"]
+self_modulate = Color( 0.921569, 0, 1, 1 )
+margin_left = 3.0
+margin_right = 5868.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 5 )
+text = "Dangerous punk is using BBB prototypes (boom boost boot) to destroy our green advertising signs and steal your data. The punk uses the \"SPACE BAR\" or \"LEFT CLICK\" to boost its boots, creating an explosion than can destroy our beloved advertising signs. He can also boost while in mid air. The BBB can be upgraded with special ELECTRIC BOOST. Please be cautious and stay alert, he can restart using the \"R KEY\".  Dangerous punk is using BBB prototypes (boom boost boot) to destroy our green advertising signs and steal your data. The punk uses the \"SPACE BAR\" or \"LEFT CLICK\" to boost its boots, creating an explosion than can destroy our beloved advertising signs. He can also boost while in mid air. The BBB can be upgraded with special ELECTRIC BOOST. Please be cautious and stay alert, he can restart using the \"R KEY\".  Dangerous punk is using BBB prototypes (boom boost boot) to destroy our green advertising signs and steal your data. The punk uses the \"SPACE BAR\" or \"LEFT CLICK\" to boost its boots, creating an explosion than can destroy our beloved advertising signs. He can also boost while in mid air. The BBB can be upgraded with special ELECTRIC BOOST. Please be cautious and stay alert, he can restart using the \"R KEY\".  Dangerous punk is using BBB prototypes (boom boost boot) to destroy our green advertising signs and steal your data. The punk uses the \"SPACE BAR\" or \"LEFT CLICK\" to boost its boots, creating an explosion than can destroy our beloved advertising signs. He can also boost while in mid air. The BBB can be upgraded with special ELECTRIC BOOST. Please be cautious and stay alert, he can restart using the \"R KEY\".  Dangerous punk is using BBB prototypes (boom boost boot) to destroy our green advertising signs and steal your data. The punk uses the \"SPACE BAR\" or \"LEFT CLICK\" to boost its boots, creating an explosion than can destroy our beloved advertising signs. He can also boost while in mid air. The BBB can be upgraded with special ELECTRIC BOOST. Please be cautious and stay alert, he can restart using the \"R KEY\".  "
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="line_edit" type="LineEdit" parent="."]
+margin_left = -1.0
+margin_top = -5.0
+margin_right = 517.0
+margin_bottom = 689.0
+custom_fonts/font = SubResource( 6 )
+align = 3
+max_length = 10
+context_menu_enabled = false
+shortcut_keys_enabled = false
+caret_blink = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="line_edit"]
+margin_top = 233.0
+margin_right = 122.0
+margin_bottom = 309.0
+custom_fonts/font = SubResource( 7 )
+text = "Name:"
+[connection signal="text_entered" from="line_edit" to="." method="_on_line_edit_text_entered"]
+[connection signal="text_entered" from="line_edit" to="line_edit" method="_on_line_edit_text_entered"]

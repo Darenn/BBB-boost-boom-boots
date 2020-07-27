@@ -10,9 +10,13 @@ var _started_climbing = false
 var _is_falling = false
 onready var _player = get_tree().get_root().get_node("main").get_node("player")
 onready var _offset_y = _player.global_position.y - global_position.y
+onready var starting_pos = global_position
+
+var game_over = false
 
 func _process(delta: float) -> void:
-	global_position.y = _player.global_position.y - _offset_y
+	if not game_over:
+		global_position.y = _player.global_position.y - _offset_y
 #	if _started_climbing:
 #		position += vertical_speed * Vector2.UP * delta
 #	elif _is_falling:
@@ -30,3 +34,11 @@ func _on_player_started_climbing() -> void:
 func _on_player_died() -> void:
 	_started_climbing = false
 	_is_falling = true
+
+
+
+func _on_player_end() -> void:
+	yield(get_tree().create_timer(5), "timeout")
+	game_over = true
+	$tween.interpolate_property(self, "global_position", global_position, starting_pos, 10)
+	$tween.start()

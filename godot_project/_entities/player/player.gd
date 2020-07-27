@@ -41,6 +41,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if _game_over:
 		return
+	if Input.is_action_just_pressed("restart") and len(NameEntry.player_name) > 0:
+		get_tree().reload_current_scene()
 	if _is_jumping:
 		if _direction == Vector2.LEFT:
 			$Sprite.flip_v = false
@@ -66,7 +68,9 @@ func _process(delta: float) -> void:
 			get_tree().get_root().get_node("main").add_child(inst)
 			inst.global_position = collision.position
 			inst.modulate = Color(0.5, 0.5, 0.5)
-			SlowTimeEffect.start(0.2, 0.5)
+			
+#			SlowTimeEffect.start(0.1, 0.5)
+			
 			emit_signal("landed")
 			
 	if Input.is_action_just_pressed("jump") and len(NameEntry.player_name) > 0 and not _game_over:
@@ -115,11 +119,12 @@ func on_destroying_destructibles(score_reward: int) -> void:
 	_scored_since_last_stop_combo = true
 	emit_signal("scored", score, combo)
 	
-func on_boost_jump(jump_speed, score_reward) -> void:
+func on_boost_jump(run_speed, jump_boost_speed, score_reward) -> void:
 	score += score_reward * combo
 	combo += 1
-	vertical_speed += jump_speed
-	_vertical_speed += jump_speed
+	vertical_speed += run_speed
+	_vertical_speed += run_speed
+	self.jump_speed += jump_boost_speed
 	_scored_since_last_stop_combo = true
 	$BoostPlayer.play()
 	emit_signal("scored", score, combo)
@@ -135,7 +140,7 @@ func stop_combo():
 func _jump() -> void:
 	if _jump_count > 0:
 		_direction = -_direction
-		_jump_count -= 1 #NO REALLY YOU SHOULD NOPT
+#		_jump_count -= 1 #NO REALLY YOU SHOULD NOPT
 
 		play_anim_jump()
 		$JumpAudioPlayer.play()
@@ -178,7 +183,7 @@ func play_anim_land():
 	$Sprite.play("run")
 		
 func die() -> void:
-	if _is_dead:
+	if _is_dead or _game_over:
 		return
 	$Sprite.flip_h = true
 	combo = 1
@@ -199,14 +204,17 @@ func die() -> void:
 	emit_signal("scored", score, combo)
 	emit_signal("died")
 
+signal end
+
 func on_end() -> void:
 	SilentWolf.Scores.persist_score(NameEntry.player_name, score)
 	_game_over = true
-	$CollisionShape2D.set_deferred("disabled", true)
-	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, 0, 5)
+#	$CollisionShape2D.set_deferred("disabled", true)
+	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, 0, 3)
 	$tween_end.start()
 	$Sprite.speed_scale = 0.5
 	$Sprite.play("falling")
 	yield($tween_end, "tween_completed")
 	$Sprite.flip_h = true
-	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, -4000, 10)
+	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, -1000, 10)
+	emit_signal("end")

@@ -1,16 +1,15 @@
-extends Label
+extends CanvasLayer
 
 
 
 func _ready() -> void:
-	$name.text = NameEntry.player_name
+	$big_news/name.text = "suspect : %s" % NameEntry.player_name
 
 
 func _on_player_scored(score, combo) -> void:
-	text = "SCORE : %s" % score
-	$combo.text  ="COMBO x%s" % combo
-	$animation_player.play("bounce")
+	$big_news/score.text = "destruction : %s" % score
+	$big_news/combo.text  ="popularity : x%s" % combo
 
 
 func _on_line_edit_text_entered(new_text: String) -> void:
-	$name.text = new_text
+	$big_news/name.text = "suspect : %s" % new_text

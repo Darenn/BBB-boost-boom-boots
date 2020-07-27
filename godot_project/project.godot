@@ -316,7 +316,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "silent_wolf", "tile_spawner" )
+enabled=PoolStringArray( "move_shortcut", "silent_wolf", "tile_spawner" )
 
 [input]
 
