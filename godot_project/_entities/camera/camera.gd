@@ -40,5 +40,5 @@ func _on_player_died() -> void:
 func _on_player_end() -> void:
 	yield(get_tree().create_timer(5), "timeout")
 	game_over = true
-	$tween.interpolate_property(self, "global_position", global_position, starting_pos, 10)
+	$tween.interpolate_property(self, "global_position", global_position, starting_pos, 5)
 	$tween.start()

@@ -6,6 +6,7 @@
 [node name="fly_bkill" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 1, 1, 1 )
 texture = ExtResource( 2 )
 vframes = 1
 hframes = 1

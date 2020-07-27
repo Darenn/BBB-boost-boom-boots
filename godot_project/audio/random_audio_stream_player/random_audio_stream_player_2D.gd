@@ -19,6 +19,7 @@ var playing_time_remaining = -1
 var to_play = []
 
 func play(from_position=0.0):
+	reset_playing_sample_nb()
 	var number_of_samples = len(streams)
 	if number_of_samples > 0:
 		if playing_sample_nb < 0:

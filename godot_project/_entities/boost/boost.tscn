@@ -26,6 +26,7 @@ tracks/0/keys = {
 [node name="boost" type="Area2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
+score_reward = 300
 
 [node name="items" type="Sprite" parent="."]
 modulate = Color( 1.05478, 1.05478, 1.05478, 1 )

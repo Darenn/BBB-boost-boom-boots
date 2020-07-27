@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://fonts/m5x7.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://effects/jump_explosion/explo-1frame.png" type="Texture" id=2]
@@ -12,11 +12,17 @@
 [ext_resource path="res://_entities/player/head.png" type="Texture" id=10]
 [ext_resource path="res://_entities/jump_pickup/star.png" type="Texture" id=12]
 
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=2]
-size = 28
+size = 32
 outline_color = Color( 1, 0, 0.890196, 1 )
 font_data = ExtResource( 1 )
 
@@ -25,6 +31,7 @@ size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -44,9 +51,21 @@ font_data = ExtResource( 1 )
 layer = 4
 script = ExtResource( 4 )
 
+[node name="name" type="Label" parent="."]
+visible = false
+margin_left = 0.0809097
+margin_top = 593.132
+margin_right = 164.081
+margin_bottom = 619.132
+custom_fonts/font = SubResource( 8 )
+text = "suspect: darenn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="news" type="NinePatchRect" parent="."]
 margin_left = -3.0
-margin_top = 622.0
+margin_top = 620.0
 margin_right = 509.0
 margin_bottom = 669.0
 texture = ExtResource( 7 )
@@ -54,17 +73,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="texture_rect4" type="TextureRect" parent="news"]
+visible = false
+margin_left = 180.369
+margin_top = 49.2059
+margin_right = 212.369
+margin_bottom = 81.2059
+rect_min_size = Vector2( 0.75, 1 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="texture_rect2" type="TextureRect" parent="news"]
-margin_left = 229.428
-margin_top = 29.7209
-margin_right = 245.428
-margin_bottom = 45.7209
+visible = false
+margin_left = 72.428
+margin_top = 19.7209
+margin_right = 88.428
+margin_bottom = 35.7209
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="texture_rect3" type="TextureRect" parent="news"]
+visible = false
 margin_left = 65.4281
 margin_top = 12.7209
 margin_right = 90.4281
@@ -78,7 +111,7 @@ __meta__ = {
 self_modulate = Color( 0, 0, 0, 1 )
 margin_left = 63.0
 margin_top = -1.0
-margin_right = 316.0
+margin_right = 311.0
 margin_bottom = 45.0
 custom_fonts/font = SubResource( 1 )
 text = "Dangerous punk pressing SPACE BAR to destroy the advertising signs and stealing citizen's private data."
@@ -88,12 +121,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="news2" type="NinePatchRect" parent="."]
+visible = false
+self_modulate = Color( 0.164706, 0.164706, 0.160784, 1 )
+margin_left = -3.0
+margin_top = 587.0
+margin_right = 103.0
+margin_bottom = 620.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="Label" parent="news2"]
+visible = false
+margin_left = 8.0
+margin_top = -1.0
+margin_right = 106.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 9 )
+text = "WANTED CRIMINAL
+Darenn"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="live" type="NinePatchRect" parent="."]
 self_modulate = Color( 1, 0.0117647, 0.0117647, 1 )
-margin_left = -2.0
-margin_top = 622.0
+margin_top = 620.0
 margin_right = 54.0
-margin_bottom = 668.0
+margin_bottom = 670.0
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -113,8 +171,8 @@ __meta__ = {
 
 [node name="big_news" type="NinePatchRect" parent="."]
 self_modulate = Color( 0.164706, 0.164706, 0.160784, 1 )
-margin_left = 315.0
-margin_top = 589.0
+margin_left = 313.0
+margin_top = 577.0
 margin_right = 526.0
 margin_bottom = 673.0
 texture = ExtResource( 7 )
@@ -124,90 +182,68 @@ __meta__ = {
 
 [node name="title" type="Label" parent="big_news"]
 self_modulate = Color( 0.894118, 0.247059, 0.968627, 1 )
-margin_left = 4.0
+margin_left = 3.0
 margin_top = -3.0
-margin_right = 196.0
-margin_bottom = 26.0
+margin_right = 175.0
+margin_bottom = 35.0
 custom_fonts/font = SubResource( 3 )
-text = "NEO BORDO NEWS"
+text = "IVOL NEWS"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="name" type="Label" parent="big_news"]
-margin_left = 22.0
-margin_top = 25.0
-margin_right = 125.0
-margin_bottom = 48.0
-custom_fonts/font = SubResource( 4 )
-text = "suspect: darenn"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="score" type="Label" parent="big_news"]
-margin_left = 22.0
-margin_top = 41.0
-margin_right = 192.0
-margin_bottom = 64.0
-custom_fonts/font = SubResource( 4 )
-text = "damages: 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="combo" type="Label" parent="big_news"]
-margin_left = 22.0
-margin_top = 57.0
-margin_right = 194.0
-margin_bottom = 80.0
-custom_fonts/font = SubResource( 4 )
-text = "popularity x1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="texture_rect" type="TextureRect" parent="big_news"]
-margin_left = 143.281
-margin_top = 31.6498
-margin_right = 161.281
-margin_bottom = 50.6498
-rect_scale = Vector2( 2, 2 )
+margin_left = 6.73178
+margin_top = 3.41608
+margin_right = 24.7318
+margin_bottom = 22.4161
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="score" type="Label" parent="big_news"]
+margin_left = 26.0
+margin_top = 32.0
+margin_right = 214.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 4 )
+text = "SCORE:  0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="combo" type="Label" parent="big_news"]
+margin_left = 27.0
+margin_top = 61.0
+margin_right = 199.0
+margin_bottom = 87.0
+custom_fonts/font = SubResource( 4 )
+text = "COMBO: x1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="texture_rect2" type="TextureRect" parent="big_news"]
-margin_left = 3.71686
-margin_top = 57.5204
-margin_right = 19.7169
-margin_bottom = 73.5204
+visible = false
+margin_left = 17.0845
+margin_top = 84.3522
+margin_right = 33.0845
+margin_bottom = 100.352
+rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="texture_rect3" type="TextureRect" parent="big_news"]
-margin_left = 3.47903
-margin_top = 41.1104
-margin_right = 35.479
-margin_bottom = 73.1104
-rect_scale = Vector2( 0.5, 0.5 )
+visible = false
+margin_left = 15.7659
+margin_top = 51.1912
+margin_right = 47.7659
+margin_bottom = 83.1912
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="texture_rect4" type="TextureRect" parent="big_news"]
-margin_left = 5.22815
-margin_top = 25.3315
-margin_right = 37.2281
-margin_bottom = 57.3315
-rect_min_size = Vector2( 0.75, 1 )
-rect_scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

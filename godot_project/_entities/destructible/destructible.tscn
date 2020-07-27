@@ -3,7 +3,6 @@
 [ext_resource path="res://textures/background.png" type="Texture" id=1]
 [ext_resource path="res://_entities/destructible/destructible.gd" type="Script" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12.5195, 16.9465 )
 
@@ -28,7 +27,7 @@ modulate = Color( 0.702155, 0.757154, 0.702155, 1 )
 scale = Vector2( 2, 2 )
 collision_layer = 16
 script = ExtResource( 2 )
-score_reward = 20
+score_reward = 10
 
 [node name="remover_pl" type="Sprite" parent="."]
 texture = ExtResource( 1 )

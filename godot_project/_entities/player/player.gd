@@ -74,6 +74,9 @@ func _process(delta: float) -> void:
 			emit_signal("landed")
 			
 	if Input.is_action_just_pressed("jump") and len(NameEntry.player_name) > 0 and not _game_over:
+		if first_time:
+			MusicPlayer.play_music()
+			first_time = false
 		if not _is_climbing:
 			emit_signal("started_climbing")
 			_is_climbing = true
@@ -86,6 +89,8 @@ func _process(delta: float) -> void:
 #		$Sprite.modulate = Color.orange
 #	else:
 #		$Sprite.modulate = Color.green
+
+var first_time = true
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch and len(NameEntry.player_name) > 0 and not _game_over:
@@ -144,6 +149,7 @@ func _jump() -> void:
 
 		play_anim_jump()
 		$JumpAudioPlayer.play()
+		$ExploPlayer.play()
 		$Sprite.modulate = Color.white
 		
 		emit_signal("jumped")
@@ -190,6 +196,8 @@ func die() -> void:
 	_is_dead = true
 	_is_climbing = false
 	_vertical_speed = fall_speed
+	vertical_speed -= 50
+	vertical_speed = max(400, vertical_speed)
 	$Sprite.speed_scale = 1
 	$Sprite.play("falling")
 #	$AnimationPlayer.play("fly")
@@ -209,8 +217,8 @@ signal end
 func on_end() -> void:
 	SilentWolf.Scores.persist_score(NameEntry.player_name, score)
 	_game_over = true
-#	$CollisionShape2D.set_deferred("disabled", true)
-	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, 0, 3)
+	$CollisionShape2D.set_deferred("disabled", true)
+	$tween_end.interpolate_property(self, "_vertical_speed", _vertical_speed, 100, 2)
 	$tween_end.start()
 	$Sprite.speed_scale = 0.5
 	$Sprite.play("falling")

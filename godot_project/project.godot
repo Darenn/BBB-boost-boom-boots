@@ -300,6 +300,10 @@ config/name="space_score_jam_9"
 run/main_scene="res://utils/splash_screen/splash_screen.tscn"
 config/icon="res://camera/box_cam_2D/icon.png"
 
+[audio]
+
+default_bus_layout="res://audio/bus/music.tres"
+
 [autoload]
 
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
