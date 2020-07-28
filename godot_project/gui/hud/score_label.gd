@@ -13,11 +13,15 @@ func _ready() -> void:
 	var count = 0
 	var already_scored = []
 	for score in SilentWolf.Scores.scores:
+		if count == 10:
+			break
 		if not already_scored.has(score.player_name):
+			count += 1
 			already_scored.append(score.player_name)
 			text+= "%s %s\n" % [score.player_name, score.score]
 		else:
 			continue
+			
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +38,10 @@ func _on_end_trigger_new_score() -> void:
 	var count = 0
 	var already_scored = []
 	for score in SilentWolf.Scores.scores:
+		if count == 10:
+			break
 		if not already_scored.has(score.player_name):
+			count += 1
 			already_scored.append(score.player_name)
 			text+= "%s %s\n" % [score.player_name, score.score]
 		else:

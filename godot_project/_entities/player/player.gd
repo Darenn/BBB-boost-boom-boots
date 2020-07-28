@@ -39,10 +39,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if _game_over:
-		return
 	if Input.is_action_just_pressed("restart") and len(NameEntry.player_name) > 0:
 		get_tree().reload_current_scene()
+	if _game_over:
+		return
 	if _is_jumping:
 		if _direction == Vector2.LEFT:
 			$Sprite.flip_v = false
