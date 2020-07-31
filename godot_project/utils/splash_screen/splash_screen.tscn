@@ -9,6 +9,63 @@
 [ext_resource path="res://utils/splash_screen/sw-logo-red.png" type="Texture" id=7]
 [ext_resource path="res://utils/splash_screen/scorespacejam_sprite_sheet.png" type="Texture" id=8]
 
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 399, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 798, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1197, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 1596, 0, 399, 224 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 224, 399, 224 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=11]
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
@@ -33,7 +90,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -41,7 +98,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=13]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:modulate")
@@ -56,70 +113,13 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 399, 224 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 399, 0, 399, 224 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 798, 0, 399, 224 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 1197, 0, 399, 224 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 1596, 0, 399, 224 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 224, 399, 224 )
-
-[sub_resource type="SpriteFrames" id=11]
-animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="Animation" id=12]
-length = 2.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="DynamicFont" id=14]
-size = 32
-font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=15]
 length = 2.0
@@ -145,6 +145,46 @@ __meta__ = {
 }
 next_scene = ExtResource( 6 )
 
+[node name="ScoreSpaceSplashScreen" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="ScoreSpaceSplashScreen"]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1.00595, 1.00595 )
+frames = SubResource( 9 )
+frame = 2
+playing = true
+
+[node name="label2" type="Label" parent="ScoreSpaceSplashScreen/AnimatedSprite"]
+margin_left = -247.0
+margin_top = 142.136
+margin_right = 267.0
+margin_bottom = 197.136
+custom_fonts/font = SubResource( 10 )
+text = "DEVELOPER'S CHOICE AWARD
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label3" type="Label" parent="ScoreSpaceSplashScreen/AnimatedSprite"]
+margin_left = -247.0
+margin_top = 173.136
+margin_right = 267.0
+margin_bottom = 257.136
+custom_fonts/font = SubResource( 10 )
+text = "Score Space Jam #9
+Best overall rating on 122 games.
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreSpaceSplashScreen"]
+anims/splash = SubResource( 11 )
+
 [node name="DarennKellerSplashScreen" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
@@ -163,24 +203,11 @@ script = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="GodotSplashScreen"]
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.52132, 0.52132 )
-frames = SubResource( 3 )
+frames = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GodotSplashScreen"]
 method_call_mode = 1
-anims/splash = SubResource( 4 )
-
-[node name="ScoreSpaceSplashScreen" type="Node2D" parent="."]
-script = ExtResource( 5 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="ScoreSpaceSplashScreen"]
-modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 1.00595, 1.00595 )
-frames = SubResource( 11 )
-frame = 5
-playing = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ScoreSpaceSplashScreen"]
-anims/splash = SubResource( 12 )
+anims/splash = SubResource( 13 )
 
 [node name="WolfSplashScreen2" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -188,7 +215,7 @@ script = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="WolfSplashScreen2"]
 modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 1.00595, 1.00595 )
-frames = SubResource( 13 )
+frames = SubResource( 14 )
 playing = true
 
 [node name="label" type="Label" parent="WolfSplashScreen2/AnimatedSprite"]
@@ -196,7 +223,7 @@ margin_left = -247.0
 margin_top = 165.0
 margin_right = 267.0
 margin_bottom = 203.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 10 )
 text = "Leaderboard hosted freely by Silent Wolf."
 align = 1
 __meta__ = {
